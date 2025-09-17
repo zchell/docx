@@ -15,15 +15,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Static Website Server"
+args = "Word Free Download Server"
 
 [[workflows.workflow]]
-name = "Static Website Server"
+name = "Word Free Download Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python -m http.server 5000 --bind 0.0.0.0"
+args = "node server.js"
 waitForPort = 5000
 
 [workflows.workflow.metadata]
@@ -34,7 +34,7 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 35777
+localPort = 43699
 externalPort = 3000
 
 [deployment]
