@@ -1,0 +1,130 @@
+@charset "UTF-8";/*!
+ * MWF (Moray) Extensions v2.15.3
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Copyright 2011-2022 The Bootstrap Authors and Twitter, Inc.
+ * Copyright ©2022 W3C® (MIT, ERCIM, Keio, Beihang).
+ */.buy-box{width:100%;max-width:1600px}
+html:not([dir=rtl]) .buy-box .buy-box-product-image-gallery button{padding-left:calc(.75rem + 1.4375em)}
+html[dir=rtl] .buy-box .buy-box-product-image-gallery button{padding-right:calc(.75rem + 1.4375em)}
+.buy-box .buy-box-product-image-gallery button::before{font-weight:400}
+html:not([dir=rtl]) .buy-box .buy-box-product-image-gallery button::before{left:.75rem}
+html[dir=rtl] .buy-box .buy-box-product-image-gallery button::before{right:.75rem}
+.buy-box .buy-box-system-requirements{position:relative}
+html:not([dir=rtl]) .buy-box .buy-box-system-requirements{margin-left:1rem}
+html[dir=rtl] .buy-box .buy-box-system-requirements{margin-right:1rem}
+.buy-box .buy-box-system-requirements::before{position:absolute;top:35%}
+html:not([dir=rtl]) .buy-box .buy-box-system-requirements::before{left:-1.05rem}
+html[dir=rtl] .buy-box .buy-box-system-requirements::before{right:-1.05rem}
+.buy-box .ownership-status-background{width:3rem;height:3rem;line-height:3rem;font-size:1.5rem;flex:0 0 auto}
+@media screen and (min-width:860px) and (max-width:1083px){.buy-box .buy-box-row{display:grid;display:-ms-grid;-ms-grid-columns:25% 75%;-ms-grid-rows:auto auto;grid-template-columns:25% 75%;grid-template-rows:auto auto}
+.buy-box .buy-box-left-col{-ms-grid-column:1;-ms-grid-row:1;-ms-grid-row-span:2;grid-column:1;grid-row:1;grid-column-start:1;grid-row-start:1;grid-row-end:span 2}
+.buy-box .buy-box-middle-col{-ms-grid-column:2;-ms-grid-row:1;grid-column:2;grid-row:1;grid-column-start:2;grid-row-start:1}
+.buy-box .buy-box-right-col{-ms-grid-column:2;-ms-grid-row:2;grid-column:2;grid-row:2;grid-column-start:2;grid-row-start:2}
+}
+html:not([dir=rtl]) .buy-box .buy-box-share button,html:not([dir=rtl]) .buy-box .buy-box-wish-list button{padding-left:1.25rem}
+html[dir=rtl] .buy-box .buy-box-share button,html[dir=rtl] .buy-box .buy-box-wish-list button{padding-right:1.25rem}
+.buy-box .buy-box-share button::before,.buy-box .buy-box-wish-list button::before{font-weight:400}
+html:not([dir=rtl]) .buy-box .buy-box-share button::before,html:not([dir=rtl]) .buy-box .buy-box-wish-list button::before{left:0}
+html[dir=rtl] .buy-box .buy-box-share button::before,html[dir=rtl] .buy-box .buy-box-wish-list button::before{right:0}
+.buy-box .buy-box-product-image picture{width:7.5rem;justify-content:center;align-items:center;max-width:100%}
+.buy-box .buy-box-product-image picture img{width:100%}
+@media screen and (min-width:540px){.buy-box .buy-box-product-image picture{width:9.375rem}
+}
+@media screen and (min-width:860px){.buy-box .buy-box-product-image picture{width:12.5rem}
+}
+.buy-box .buy-box-bullet-discounts::after,.buy-box .buy-box-bullet::after{content:"\2022"}
+.buy-box .buy-box-bullet::after{margin-right:.625rem;margin-left:.25rem}
+.buy-box .buy-box-bullet-discounts::after{margin-right:.225rem;margin-left:.425rem}
+html:not([dir=rtl]) .buy-box .buy-box-description ul{padding-left:1.5rem}
+html[dir=rtl] .buy-box .buy-box-description ul{padding-right:1.5rem}
+.buy-box .buy-box-promotions{line-height:normal}
+.buy-box .buy-box-inline-buy-buttons{display:flex}
+@media screen and (min-width:1084px) and (max-width:1400px){.buy-box .buy-box-inline-buy-buttons{display:block}
+}
+.buy-box .buy-box-split-buy-buttons{display:flex}
+.buy-box .buy-box-split-buy-buttons .primary-buy-button{flex:1 0 0}
+.buy-box .buy-box-split-buy-buttons .additional-buy-options>button{height:100%}
+html:not([dir=rtl]) .buy-box .buy-box-split-buy-buttons .additional-buy-options>button{padding-right:.75rem}
+html[dir=rtl] .buy-box .buy-box-split-buy-buttons .additional-buy-options>button{padding-left:.75rem}
+.buy-box .buy-box-split-buy-buttons .additional-buy-options>button::after{content:none}
+html:not([dir=rtl]) .buy-box .buy-box-split-buy-buttons .additional-buy-options>button::before{left:.875rem}
+html[dir=rtl] .buy-box .buy-box-split-buy-buttons .additional-buy-options>button::before{right:.875rem}
+.buy-box .buy-button-separator{text-align:center;display:flex;align-items:center}
+.buy-box .buy-button-separator::before{margin-right:.5rem}
+.buy-box .buy-button-separator::after{margin-left:.5rem}
+.buy-box .buy-button-separator::after,.buy-box .buy-button-separator::before{content:"";flex:1;background:#d2d2d2;height:.0625rem;margin-top:.1875rem}
+@media screen and (min-width:860px){.buy-box .buy-box-bundle-product-images{max-width:50%}
+}
+@media screen and (min-width:1084px){.buy-box .buy-box-bundle-product-images{max-width:75%}
+}
+.buy-box .buy-box-bundle-product-image-container{flex:1;max-width:8.75rem}
+@media screen and (min-width:540px) and (max-width:860px){.buy-box .buy-box-buy-buttons,.buy-box .buy-box-edition-picker{max-width:21rem}
+}
+@media screen and (min-width:860px) and (max-width:1084px){.buy-box .buy-box-buy-buttons,.buy-box .buy-box-edition-picker{max-width:23.5rem}
+}
+.buy-box .list-secondary-header{font-weight:600;font-size:16px}
+.buy-box .buy-box-bundle-thumbs .glyph-prepend-add::before{font-size:12px;font-weight:700;display:none}
+@media screen and (min-width:540px){.buy-box .buy-box-bundle-thumbs .glyph-prepend-add::before{display:inline-block}
+}
+@media screen and (-ms-high-contrast:active){.buy-box-buy-buttons .btn.disabled,.btn:disabled{opacity:1 !important}
+}
+.buybox-spinner-container{position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(255,255,255,.9);z-index:1000}
+.buybox-spinner.buybox-spinner-lg{left:50%;top:50%}
+.buy-box .action-trigger{text-decoration:none !important}
+.buy-box .card-body a{position:relative;text-decoration:none;display:inline-block;font-weight:600}
+.buy-box-business-discount-section{background-color:#f8f1fe;padding:1rem}
+.buy-box-business-discount-message{padding:.5rem}
+.buy-box-business-divider-left{width:100%;align-self:center;margin-right:.2rem;color:#d2d2d2}
+.buy-box-business-divider-right{width:100%;align-self:center;margin-left:.2rem;color:#d2d2d2}
+.buy-box [id^="buy-now-modal"],.sticky-tabs [id^="buy-now-modal"]{overflow-y:auto}
+.buy-box [id^="buy-now-modal"] .buy-now-iframe,.sticky-tabs [id^="buy-now-modal"] .buy-now-iframe{pointer-events:visible;margin:auto;border:none !important}
+.buy-box-business-discount-section-transparant{background-color:#463668 !important}
+a.buy-box-business-buy-buttons-color-white{color:#fff !important}
+.vsb-bb-popover{text-decoration:underline;cursor:pointer;color:#0067b8}
+@media screen and (max-width:456px){.buy-box [id^="buy-now-modal"] .buy-now-iframe,.sticky-tabs [id^="buy-now-modal"] .buy-now-iframe{max-width:100%;max-height:100%;width:100%;height:560px}
+}
+@media screen and (min-width:457px){.buy-box [id^="buy-now-modal"] .buy-now-iframe,.sticky-tabs [id^="buy-now-modal"] .buy-now-iframe{width:456px !important;height:560px !important}
+}
+.buy-box [id^="buy-now-modal"] + .modal-backdrop,.sticky-tabs [id^="buy-now-modal"] + .modal-backdrop{width:100%;height:100%}
+.buy-box .errorState{display:block;height:auto;text-align:left;width:100%;color:#c50500;clear:both}
+.buy-box .sr-text{border:0;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal !important}
+.buy-box .custom-radio-block .custom-control-label::before,.buy-box .custom-radio-block .custom-control-label .custom-control-glyph::before{display:none}
+.buy-box fieldset:has(.custom-radio-block){display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between;align-items:stretch}
+.buy-box .custom-radio-block{display:block;flex:1 0 0;min-width:fit-content;text-align:center;outline:1px solid #dbdbdb;padding:.25rem}
+@media screen and (min-width:540px) and (max-width:860px){.buy-box fieldset:has(.custom-radio-block){max-width:21rem}
+}
+@media screen and (min-width:860px) and (max-width:1084px){.buy-box fieldset:has(.custom-radio-block){max-width:23.5rem}
+}
+.buy-box fieldset .custom-radio-block:hover{outline-color:black}
+.buy-box fieldset .custom-radio-block:hover,fieldset .custom-radio-block label:hover{cursor:pointer}
+.buy-box fieldset .custom-radio-block:has(input[checked]){border:2px solid black}
+.buy-box fieldset .custom-radio-block:has(input[checked]:focus){outline:.1875rem dotted currentColor;outline-offset:-.375rem}
+.buy-box .form-group .custom-radio-block~.custom-radio-block:not(.custom-control-inline){margin-top:0}
+.buy-box .mtv-tags .card-body p a{font-weight:bold}
+.buy-box .mtv-tags .card-body p a:not(:hover){text-decoration:none}
+.buy-box ul:has(.card-body).mtv-tags>li:not(:last-child):has(.card-body){position:relative}
+.buy-box ul:has(.card-body).mtv-tags>li:not(:last-child):has(.card-body)::after{content:"";position:relative;width:4px;height:4px;border-radius:100%;left:1rem;margin:auto;background:#000}
+.buy-box .mtv-tags .metadata-badge{border:1px solid black;border-radius:.25rem;padding:0 .25rem;margin-inline:.25rem;font-size:.8rem;font-weight:600}
+.buy-box .plain-link{font-weight:600;text-decoration:none}
+.buybox__moviesanywhere-img{width:3rem}
+@media(min-width:860px){.buybox__hero-image>*{height:600px !important}
+.buybox__hero-image + .buy-box{margin-block-start:350px}
+}
+.buybox__hero-image{z-index:-1;position:absolute;top:0;left:0;width:100%}
+.buybox__hero-image>*{display:block;width:100%;box-sizing:border-box;padding:1rem;object-fit:cover;object-position:top;height:150px}
+.buybox__hero-image::before{content:'';position:absolute;width:100%;height:100%;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:#ffffffa3}
+.buybox__xbox-cta{display:block;background:#107c10;color:white !important;padding:.5rem 1rem;text-align:center;margin-block-end:1rem;text-decoration:none}
+.buy-box .power-supply-display{padding:1rem;background-color:#f2f2f2;max-height:100%;max-width:100%;margin-bottom:.5rem}
+.buy-box .power-supply-display p,.buy-box .power-supply-display h3{margin-bottom:.5rem}
+.buy-box .power-supply-title{font-weight:600;font-size:1rem;line-height:1.5rem}
+.buy-box .power-supply-description{font-weight:400;font-size:.875rem;line-height:1.25rem}
+.buy-box .power-supply-image-display{margin-bottom:.5rem}
+.buy-box .power-supply-display img{max-width:100%;max-height:70px}
+.buy-box .power-supply-link.action-trigger{text-decoration:underline !important;font-weight:400;font-size:.875rem;line-height:1rem;text-align:left}
+.buybox-power-supply-modal .table tr>:first-child{padding-left:.75rem}
+.buybox-power-supply-modal .image{display:flex;justify-content:center;align-items:center}
+@media screen and (min-width:540px) and (max-width:860px){.buy-box .power-supply-display{max-width:21rem}
+}
+@media screen and (min-width:861px) and (max-width:1084px){.buy-box .power-supply-display{max-width:23.5rem}
+}
+.buy-box .show-more-show-less{overflow-wrap:break-word}
