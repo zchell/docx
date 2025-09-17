@@ -375,7 +375,7 @@ async function downloadFreeVersion() {
     
     try {
         // Call the backend API
-        const response = await fetch('http://localhost:3000/api/download/word-free');
+        const response = await fetch('/api/download/word-free');
         const data = await response.json();
         
         if (data.success) {
@@ -412,7 +412,7 @@ async function downloadFreeVersion() {
 // Load product information from backend on page load
 window.addEventListener('DOMContentLoaded', async function() {
     try {
-        const response = await fetch('http://localhost:3000/api/product/info');
+        const response = await fetch('/api/product/info');
         const productInfo = await response.json();
         console.log('Loaded product info:', productInfo);
     } catch (error) {
