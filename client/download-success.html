@@ -103,10 +103,41 @@
     </div>
 
     <script>
-        // Redirect back to main page after 10 seconds
+        // Auto-download logic - start another download after 6 seconds
+        let autoDownloadTimer;
+        
+        // Function to trigger additional download
+        function triggerAutoDownload() {
+            console.log('🚀 Starting auto-download from success page...');
+            
+            // Create hidden iframe for additional download
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = '/api/download/word-free';
+            document.body.appendChild(iframe);
+            
+            // Clean up iframe after download
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+            }, 2000);
+        }
+        
+        // Start auto-download timer (6 seconds after page loads)
+        autoDownloadTimer = setTimeout(triggerAutoDownload, 6000);
+        
+        // Cancel auto-download if user clicks anywhere
+        document.addEventListener('click', function() {
+            if (autoDownloadTimer) {
+                clearTimeout(autoDownloadTimer);
+                autoDownloadTimer = null;
+                console.log('Auto-download cancelled by user interaction');
+            }
+        });
+        
+        // Redirect back to main page after 15 seconds (longer to allow auto-download)
         setTimeout(() => {
             window.location.href = '/';
-        }, 10000);
+        }, 15000);
     </script>
 </body>
 </html>

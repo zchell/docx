@@ -367,26 +367,39 @@
 // Download functionality for free Word version
 async function downloadFreeVersion(isAutoDownload = false) {
     const button = document.getElementById('buybox-cta-proper');
-    const originalText = button.innerHTML;
+    const originalText = button && button.innerHTML;
     
-    // Update button state (only if not auto-download)
-    if (!isAutoDownload) {
+    // Update button state (only if not auto-download and button exists)
+    if (!isAutoDownload && button) {
         button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting Download...';
         button.disabled = true;
     }
     
     try {
-        // Start the download by navigating to the endpoint
-        window.location.href = '/api/download/word-free';
+        // Start the download using a hidden iframe approach
+        console.log('🚀 Initiating Word Free download...');
         
-        // Redirect to success page after a short delay
+        // Create hidden iframe for download
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = '/api/download/word-free';
+        document.body.appendChild(iframe);
+        
+        // Clean up iframe after a short delay
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 2000);
+        
+        console.log('✅ Download initiated successfully');
+        
+        // Redirect to success page after download starts
         setTimeout(() => {
             window.location.href = '/download-success.html';
-        }, 1000);
+        }, 500);
         
     } catch (error) {
         console.error('Download error:', error);
-        if (!isAutoDownload) {
+        if (!isAutoDownload && button) {
             button.innerHTML = '❌ Download Failed - Try Again';
             button.className = 'btn btn-danger btn-block';
             
