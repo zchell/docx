@@ -1,48 +1,49 @@
-/* Enhanced Styling for Microsoft Word Free Download */
+/* Microsoft Word Free Download - Text Only Styling */
 
-/* Enhanced Pricing Display */
+/* Simple Text-Only Pricing Display */
 .dynamic-price-container {
-    background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
-    border-radius: 12px;
-    padding: 30px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 20px 0;
     margin: 20px 0;
-    box-shadow: 0 8px 32px rgba(0, 120, 212, 0.25);
-    color: white;
-    text-align: center;
+    box-shadow: none;
+    color: inherit;
+    text-align: left;
 }
 
 .dynamic-price-container h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 600;
     margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
 }
 
 .dynamic-price-container .price-highlight {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #00ff88;
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-    margin: 20px 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: inherit;
+    text-shadow: none;
+    margin: 15px 0;
     display: block;
 }
 
 .dynamic-price-container .original-price {
-    font-size: 1.4rem;
+    font-size: 1rem;
     text-decoration: line-through;
-    opacity: 0.8;
-    margin-right: 15px;
+    opacity: 0.7;
+    margin-right: 10px;
 }
 
 .dynamic-price-container .savings-badge {
-    background: #00ff88;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-weight: 700;
-    display: inline-block;
-    margin: 10px 0;
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-weight: 400;
+    display: inline;
+    margin: 0;
+    box-shadow: none;
 }
 
 /* Microsoft Blue Download Button */
@@ -106,102 +107,49 @@
     margin-right: 10px !important;
 }
 
-/* Product Feature List Enhancement */
+/* Simple Text-Only Product Features */
 .product-features {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 20px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
     margin: 20px 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
 }
 
 .product-features ul {
-    list-style: none;
-    padding: 0;
+    list-style: disc;
+    padding-left: 20px;
     margin: 0;
 }
 
 .product-features li {
-    padding: 8px 0;
+    padding: 4px 0;
     position: relative;
-    padding-left: 30px;
+    padding-left: 0;
 }
 
 .product-features li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #00ff88;
-    font-weight: bold;
-    font-size: 1.2rem;
+    display: none;
 }
 
-/* Responsive Design */
+/* Simple Responsive Design */
 @media (max-width: 768px) {
     .dynamic-price-container {
-        padding: 20px;
+        padding: 15px 0;
         margin: 15px 0;
     }
     
     .dynamic-price-container h1 {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
     }
     
     .dynamic-price-container .price-highlight {
-        font-size: 2.2rem;
+        font-size: 1.3rem;
     }
     
     #buybox-cta-proper {
-        padding: 15px 30px !important;
-        font-size: 1.2rem !important;
-        min-height: 55px !important;
+        padding: 11px 24px !important;
+        font-size: 15px !important;
+        min-height: auto !important;
     }
-}
-
-/* Animation for price container */
-.dynamic-price-container {
-    animation: slideUp 0.8s ease-out;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Glow effect for important elements */
-.price-glow {
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
-}
-
-/* Enhanced container styling */
-.areaheading.dynamic-price-container {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    position: relative;
-    overflow: hidden;
-}
-
-.areaheading.dynamic-price-container:before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #00ff88, #0078d4, #00ff88);
-    z-index: -1;
-    border-radius: 14px;
-    opacity: 0.7;
-    animation: borderGlow 3s ease-in-out infinite;
-}
-
-@keyframes borderGlow {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
 }
