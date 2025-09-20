@@ -1701,8 +1701,26 @@ document.addEventListener('click', function() {
 </li></ul>
 </span></div></div></div></div></div></div>
 
+<!-- Hide dynamic buybox and show custom pricing -->
+<style>
+/* Hide the dynamic buybox sections that are interfering */
+[data-automation-test-id="buy-box-pricing"],
+.buy-box-middle-col,
+section.buy-box,
+#rootContainer_BuyBox {
+    display: none !important;
+}
+
+/* Ensure our custom pricing section is visible */
+.col-lg-3.download-box-right-col {
+    display: block !important;
+    position: relative;
+    z-index: 999;
+}
+</style>
+
 <!-- Updated Pricing Section -->
-<div class="col-lg-3 download-box-right-col">
+<div class="col-lg-3 download-box-right-col" style="display: block !important; position: relative; z-index: 999;">
     <div class="pb-4 pr-lg-4">
         <!-- Pricing Display -->
         <div class="pricing-section mb-4">
