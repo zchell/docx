@@ -1,0 +1,111 @@
+> word-free-download@1.0.0 postinstall
+> node build.js
+
+🚀 Microsoft Word Free Download - Full Stack Build
+════════════════════════════════════════════════════════════
+
+🔍 Validating Project Structure...
+✅ Directory exists: client
+✅ Directory exists: client/css
+✅ Directory exists: client/js
+✅ Directory exists: client/images
+✅ Directory exists: client/fonts
+✅ Directory exists: client/public
+✅ File exists: server.js
+✅ File exists: package.json
+✅ File exists: client/index.html
+✅ File exists: client/public/Word_Free_1Year_Setup.msi
+✅ File exists: .env.example
+
+📦 Checking Dependencies...
+ℹ️  Production dependencies: 9
+ℹ️  Development dependencies: 1
+✅ All required dependencies present
+
+🌍 Environment Setup...
+✅ .env.example found
+✅ .env file present
+
+🎨 Optimizing CSS...
+ℹ️  Found 11 CSS files
+✅ Enhanced styling file present
+
+🔧 Validating JavaScript...
+ℹ️  Found 19 JavaScript files
+✅ Download functionality present in HTML
+
+🖼️  Optimizing Assets...
+ℹ️  client/images: 4 files
+ℹ️  client/fonts: 35 files
+ℹ️  client/public: 1 files
+✅ MSI file ready: 1.68 KB
+
+🚀 Development Server Check...
+⚠️  Server might not be configured for Replit
+✅ Telegram logging functionality present
+✅ MSI file path configured correctly
+
+📊 Build Report
+══════════════════════════════════════════════════
+Build Time: 48ms
+Errors: 0
+Warnings: 1
+
+Warnings:
+  • Server might not be configured for Replit
+
+══════════════════════════════════════════════════
+✅ Build completed successfully! 🎉
+
+added 138 packages, and audited 139 packages in 6s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\Users\Admins\Desktop\docx (4)\docx>npx vite --port 5000
+
+  VITE v6.3.6  ready in 614 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+10:13:52 AM [vite] Internal server error: Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+ at C:/Users/Admins/Desktop/docx (4)/docx/client/index.html:1296:31
+1294|                  <li id="overflow-menu" class="overflow-menu x-hidden uhf-menu-item">
+1295|                          <div class="c-uhf-menu js-nav-menu">
+1296|          <button data-m="{" pid":"more","id":"nn10c8c3m1r1a1","sn":10,"an":"c8c3m1r1a1"}"="" type="button" aria-label="More" aria-expanded="false">More</button>
+   |                                ^
+1297|          <ul id="overflow-menu-list" aria-hidden="true" class="overflow-menu-list">
+1298|          </ul>
+   at C:/Users/Admins/Desktop/docx (4)/docx/client/index.html:1296:31
+      at handleParseError (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+      at Parser.onParseError (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+      at Tokenizer._err (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+      at Tokenizer._stateAttributeName (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+      at Tokenizer._callState (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+      at Tokenizer._runParsingLoop (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+      at Tokenizer.write (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+      at Parser.parse (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+      at parse (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+      at traverseHtml (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15)
+10:13:56 AM [vite] Internal server error: Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+ at C:/Users/Admins/Desktop/docx (4)/docx/client/index.html:1296:31
+1294|                  <li id="overflow-menu" class="overflow-menu x-hidden uhf-menu-item">
+1295|                          <div class="c-uhf-menu js-nav-menu">
+1296|          <button data-m="{" pid":"more","id":"nn10c8c3m1r1a1","sn":10,"an":"c8c3m1r1a1"}"="" type="button" aria-label="More" aria-expanded="false">More</button>
+   |                                ^
+1297|          <ul id="overflow-menu-list" aria-hidden="true" class="overflow-menu-list">
+1298|          </ul>
+   at C:/Users/Admins/Desktop/docx (4)/docx/client/index.html:1296:31
+      at handleParseError (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+      at Parser.onParseError (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+      at Tokenizer._err (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+      at Tokenizer._stateAttributeName (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+      at Tokenizer._callState (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+      at Tokenizer._runParsingLoop (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+      at Tokenizer.write (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+      at Parser.parse (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+      at parse (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+      at traverseHtml (file:///C:/Users/Admins/Desktop/docx%20(4)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15) (x2)

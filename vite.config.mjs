@@ -5,6 +5,13 @@ export default defineConfig({
   // Entry point for Vite
   root: 'client',
   
+  // Server configuration for Replit compatibility
+  server: {
+    host: '0.0.0.0',
+    port: 5000,
+    strictPort: true
+  },
+  
   // Build configuration
   build: {
     outDir: '../dist/client',
