@@ -10,7 +10,7 @@ A professional Microsoft Word download website with comprehensive Telegram loggi
 - **Server verification**: Confirmed server runs on 0.0.0.0:5000 as required for Replit
 - **API Testing**: Both product info and download endpoints working correctly
 - **Frontend Testing**: Microsoft-styled interface loading and functioning properly
-- **Deployment configured**: Set up autoscale deployment target with Node.js server command
+- **Deployment configured**: Set up VM deployment target for continuous server operation
 
 ## Project Architecture  
 - **Backend**: Node.js Express server (server.js) on port 5000
@@ -32,7 +32,7 @@ A professional Microsoft Word download website with comprehensive Telegram loggi
 - ✅ Product info loading correctly from backend
 - ✅ Download endpoint accessible and functional
 - ✅ All dependencies installed and working (139 packages)
-- ✅ Deployment configuration completed (autoscale target)
+- ✅ Deployment configuration completed (VM target for continuous operation)
 - ✅ API endpoints tested and functioning (/api/product/info, /api/download/word-free)
 - ✅ Project fully ready for Replit environment
 - ⚠️ Expected JavaScript errors from Microsoft third-party scripts (doesn't affect functionality)
