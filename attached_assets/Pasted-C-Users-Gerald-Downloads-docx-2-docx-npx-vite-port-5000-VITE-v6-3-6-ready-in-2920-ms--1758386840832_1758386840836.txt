@@ -1,0 +1,26 @@
+C:\Users\Gerald\Downloads\docx (2)\docx>npx vite --port 5000
+
+  VITE v6.3.6  ready in 2920 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+9:36:07 AM [vite] Internal server error: Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+ at C:/Users/Gerald/Downloads/docx (2)/docx/client/index.html:915:43
+913|
+914|
+915|                          <div data-m="{" cn":"cookiebanner_cont","ct":"container","id":"c1m1r1a1","sn":1,"an":"m1r1a1"}"="">
+   |                                            ^
+916|
+917|
+   at C:/Users/Gerald/Downloads/docx (2)/docx/client/index.html:915:43
+      at handleParseError (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+      at Parser.onParseError (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+      at Tokenizer._err (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+      at Tokenizer._stateAttributeName (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+      at Tokenizer._callState (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+      at Tokenizer._runParsingLoop (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+      at Tokenizer.write (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+      at Parser.parse (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+      at parse (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+      at traverseHtml (file:///C:/Users/Gerald/Downloads/docx%20(2)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15)
