@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/index.html"
+    }
+  ],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 10,
+      "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
+    }
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

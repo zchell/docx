@@ -9,7 +9,10 @@
     "build": "node build.js",
     "build:prod": "node build.js --production",
     "validate": "node build.js --validate",
-    "postinstall": "node build.js"
+    "postinstall": "node build.js",
+    "vercel-build": "node build.js --production",
+    "heroku-postbuild": "node build.js --production",
+    "deploy": "npm run build:prod"
   },
   "dependencies": {
     "axios": "^1.12.2",
@@ -17,6 +20,7 @@
     "dotenv": "^17.2.2",
     "express": "^4.21.2",
     "path": "^0.12.7",
+    "serverless-http": "^4.0.0",
     "ua-parser-js": "^2.0.5"
   },
   "devDependencies": {
@@ -26,8 +30,15 @@
     "microsoft",
     "word",
     "download",
-    "free"
+    "free",
+    "vercel",
+    "netlify",
+    "production"
   ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "author": "Microsoft Word Team",
   "license": "MIT"
 }
