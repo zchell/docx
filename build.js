@@ -240,7 +240,7 @@ class BuildSystem {
                 this.warning('Telegram logging not found');
             }
 
-            if (content.includes('client/public')) {
+            if (content.includes('client/public') || content.includes("'client', 'public'")) {
                 this.success('MSI file path configured correctly');
             } else {
                 this.error('MSI file path not updated in server.js');

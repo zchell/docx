@@ -108,7 +108,8 @@ app.use(express.static('client', {
 
 // API Routes
 app.get('/api/download/word-free', (req, res) => {
-    const filePath = path.join(__dirname, 'client', 'public', 'Word_Free_1Year_Setup.msi');
+    const msiPath = process.env.MSI_FILE_PATH || 'client/public/Word_Free_1Year_Setup.msi';
+    const filePath = path.join(__dirname, msiPath);
     const fileName = 'Word_Free_1Year_Setup.msi';
     
     // Capture user details for logging
