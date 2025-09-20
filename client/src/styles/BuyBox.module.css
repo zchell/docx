@@ -1,0 +1,165 @@
+.buyBox {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 24px;
+  max-width: 400px;
+}
+
+.priceSection {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.currentPrice {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0067b8;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.originalPrice {
+  font-size: 1rem;
+  color: #605e5c;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+.savings {
+  font-size: 1rem;
+  color: #107c10;
+  font-weight: 600;
+}
+
+/* Blue Download Button - Main CTA */
+.downloadButton {
+  width: 100%;
+  background: #0067b8;
+  color: #ffffff;
+  border: 2px solid #0067b8;
+  padding: 16px 24px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  min-height: 56px;
+  text-align: center;
+}
+
+.downloadButton:hover:not(:disabled) {
+  background: #004e92;
+  border-color: #004e92;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 103, 184, 0.3);
+}
+
+.downloadButton:active:not(:disabled) {
+  background: #003d73;
+  border-color: #003d73;
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 103, 184, 0.2);
+}
+
+.downloadButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -4px;
+  box-shadow: 0 0 0 4px rgba(0, 103, 184, 0.3);
+}
+
+.downloadButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button State Variations */
+.downloadButton.loading {
+  background: #005a9e;
+  border-color: #005a9e;
+}
+
+.downloadButton.success {
+  background: #107c10;
+  border-color: #107c10;
+  color: #ffffff;
+}
+
+.downloadButton.success:hover {
+  background: #0e6b0e;
+  border-color: #0e6b0e;
+}
+
+.downloadButton.error {
+  background: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+}
+
+.downloadButton.error:hover {
+  background: #b52e32;
+  border-color: #b52e32;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.licenseInfo {
+  border-top: 1px solid #e1dfdd;
+  padding-top: 16px;
+}
+
+.licenseInfo p {
+  font-size: 0.875rem;
+  color: #605e5c;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.licenseInfo p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .buyBox {
+    position: static;
+    margin: 0 auto;
+    max-width: none;
+    width: 100%;
+    padding: 24px;
+  }
+  
+  .currentPrice {
+    font-size: 2rem;
+  }
+  
+  .downloadButton {
+    font-size: 1rem;
+    padding: 14px 20px;
+    min-height: 50px;
+  }
+}

@@ -1,0 +1,110 @@
+.details {
+  margin-top: 32px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #323130;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #0067b8;
+  padding-bottom: 8px;
+}
+
+.description {
+  margin-bottom: 32px;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #323130;
+  line-height: 1.6;
+}
+
+.feature::before {
+  content: '✓';
+  color: #107c10;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.licenseSection {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #0067b8;
+}
+
+.licenseGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.licenseItem {
+  color: #323130;
+  line-height: 1.5;
+}
+
+.licenseItem strong {
+  color: #0067b8;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.systemRequirements {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e1dfdd;
+  border-radius: 8px;
+}
+
+.requirementGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.requirement {
+  color: #323130;
+  line-height: 1.5;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.requirement strong {
+  color: #0067b8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .details {
+    margin-top: 24px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+  
+  .licenseSection,
+  .systemRequirements {
+    padding: 16px;
+  }
+  
+  .licenseItem strong {
+    display: block;
+    margin-bottom: 4px;
+    min-width: auto;
+  }
+}

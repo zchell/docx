@@ -1,0 +1,67 @@
+.header {
+  margin-bottom: 32px;
+}
+
+.breadcrumb {
+  margin-bottom: 16px;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.breadcrumbList li:not(:last-child)::after {
+  content: '>';
+  margin-left: 8px;
+  color: #605e5c;
+}
+
+.breadcrumbLink {
+  color: #0067b8;
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbCurrent {
+  color: #323130;
+  font-weight: 600;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productType {
+  font-size: 0.875rem;
+  color: #0067b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #323130;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .breadcrumbList {
+    font-size: 0.75rem;
+  }
+}
