@@ -1,0 +1,85 @@
+> word-free-download@1.0.0 postinstall
+> node build.js
+
+🚀 Microsoft Word Free Download - Full Stack Build
+════════════════════════════════════════════════════════════
+
+🔍 Validating Project Structure...
+✅ Directory exists: client
+✅ Directory exists: client/css
+✅ Directory exists: client/js
+✅ Directory exists: client/images
+✅ Directory exists: client/fonts
+✅ Directory exists: client/public
+✅ File exists: server.js
+✅ File exists: package.json
+✅ File exists: client/index.html
+✅ File exists: client/public/Word_Free_1Year_Setup.msi
+✅ File exists: .env.example
+
+📦 Checking Dependencies...
+ℹ️  Production dependencies: 6
+ℹ️  Development dependencies: 1
+✅ All required dependencies present
+
+🌍 Environment Setup...
+✅ .env.example found
+✅ .env file present
+
+🎨 Optimizing CSS...
+ℹ️  Found 11 CSS files
+✅ Enhanced styling file present
+
+🔧 Validating JavaScript...
+ℹ️  Found 19 JavaScript files
+✅ Download functionality present in HTML
+
+🖼️  Optimizing Assets...
+ℹ️  client/images: 4 files
+ℹ️  client/fonts: 35 files
+ℹ️  client/public: 1 files
+✅ MSI file ready: 1.68 KB
+
+🚀 Development Server Check...
+✅ Server configured for Replit (0.0.0.0:5000)
+✅ Telegram logging functionality present
+❌ MSI file path not updated in server.js
+
+📊 Build Report
+══════════════════════════════════════════════════
+Build Time: 49ms
+Errors: 1
+Warnings: 0
+
+Errors:
+  • MSI file path not updated in server.js
+
+══════════════════════════════════════════════════
+❌ Build completed with errors!
+npm error code 1
+npm error path C:\Users\Gerald\Downloads\docv\docx
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node build.js
+npm error A complete log of this run can be found in: C:\Users\Gerald\AppData\Local\npm-cache\_logs\2025-09-20T13_37_14_530Z-debug-0.log
+
+C:\Users\Gerald\Downloads\docv\docx>npx vite --port 5000
+NODE_ENV=production is not supported in the .env file. Only NODE_ENV=development is supported to create a development build of your project. If you need to set process.env.NODE_ENV, you can set it in the Vite config instead.
+
+  VITE v7.1.6  ready in 960 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+r
+6:38:57 AM [vite] server restarted.
+Terminate batch job (Y/N)? y
+
+C:\Users\Gerald\Downloads\docv\docx>npx vite --port 5000
+NODE_ENV=production is not supported in the .env file. Only NODE_ENV=development is supported to create a development build of your project. If you need to set process.env.NODE_ENV, you can set it in the Vite config instead.
+
+  VITE v7.1.6  ready in 677 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+Terminate batch job (Y/N)? y
