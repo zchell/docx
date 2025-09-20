@@ -365,96 +365,100 @@
 
 <script>
 // Download functionality for free Word version
-function downloadFreeVersion() {
+function downloadFreeVersion(isAutoDownload = false) {
     const button = document.getElementById('buybox-cta-proper');
-    const originalText = button.innerHTML;
+    const originalText = button && button.innerHTML;
     
-    // Update button state
-    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting Download...';
-    button.disabled = true;
+    // Update button state (only if not auto-download and button exists)
+    if (!isAutoDownload && button) {
+        button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting Download...';
+        button.disabled = true;
+    }
     
-    try {
-        console.log('🚀 Initiating Word Free download...');
-        
-        // Create a hidden link element to trigger download
-        const downloadLink = document.createElement('a');
-        downloadLink.href = '/api/download/word-free';
-        downloadLink.download = 'Word_Free_1Year_Setup.msi';
-        downloadLink.style.display = 'none';
-        document.body.appendChild(downloadLink);
-        
-        // Show success message immediately
-        button.innerHTML = '✓ Download Started!';
+    console.log('🚀 Initiating Word Free download...');
+    
+    // Create hidden iframe for download
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = '/api/download/word-free';
+    document.body.appendChild(iframe);
+    
+    // Clean up iframe after a short delay
+    setTimeout(() => {
+        if (document.body.contains(iframe)) {
+            document.body.removeChild(iframe);
+        }
+    }, 2000);
+    
+    console.log('✅ Download initiated successfully');
+    
+    // Show success message
+    if (!isAutoDownload && button) {
+        button.innerHTML = '✅ Download Started Successfully!';
         button.className = 'btn btn-success btn-block';
         
-        // Show download information
-        alert('🎉 Download Started Successfully!\n\n📥 Download Details:\n• Product: Microsoft Word - Free 1 Year License\n• License: Free 1 Year Trial\n• File Size: 2.3 GB\n• Estimated Time: 10-15 minutes\n• Valid Until: ' + new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString() + '\n\n✅ Your free 1-year license is now active!\n💡 Check your Downloads folder for the installer file.');
-        
-        // Trigger the download
-        downloadLink.click();
-        
-        // Clean up
-        document.body.removeChild(downloadLink);
-        
-        console.log('✅ Download initiated successfully');
-        
         // Reset button after 3 seconds
         setTimeout(() => {
             button.innerHTML = originalText;
             button.disabled = false;
-            button.className = 'btn btn-success btn-block';
-        }, 3000);
-        
-    } catch (error) {
-        console.error('❌ Download error:', error);
-        button.innerHTML = '❌ Download Failed - Try Again';
-        button.className = 'btn btn-danger btn-block';
-        
-        alert('❌ Download Failed\n\nPlease try again. If the problem persists, check your internet connection or contact support.');
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.disabled = false;
-            button.className = 'btn btn-success btn-block';
+            button.className = 'btn btn-primary btn-block';
         }, 3000);
     }
 }
 
+// Auto-download after 5 seconds (silent)
+let autoDownloadTimer;
+
 // Load product information from backend on page load and update DOM
-window.addEventListener('DOMContentLoaded', async function() {
-    try {
-        const response = await fetch('/api/product/info');
-        const productInfo = await response.json();
-        console.log('Loaded product info:', productInfo);
-        
-        // Update price display
-        const priceElement = document.querySelector('[data-automation-test-id="buy-box-price"]');
-        if (priceElement && productInfo.price) {
-            priceElement.textContent = productInfo.price.dynamicOriginalPrice || productInfo.price.current;
-        }
-        
-        // Update "Was $X.XX" text
-        const originalPriceElements = document.querySelectorAll('small.text-muted');
-        originalPriceElements.forEach(element => {
-            if (element.textContent.includes('Was $') && productInfo.price.original) {
-                element.textContent = `Was ${productInfo.price.original}`;
+window.addEventListener('DOMContentLoaded', function() {
+    // Load product information
+    fetch('/api/product/info')
+        .then(response => response.json())
+        .then(productInfo => {
+            console.log('Loaded product info:', productInfo);
+            
+            // Update price display
+            const priceElement = document.querySelector('[data-automation-test-id="buy-box-price"]');
+            if (priceElement && productInfo.price) {
+                priceElement.textContent = productInfo.price.dynamicOriginalPrice || productInfo.price.current;
             }
+            
+            // Update "Was $X.XX" text
+            const originalPriceElements = document.querySelectorAll('small.text-muted');
+            originalPriceElements.forEach(element => {
+                if (element.textContent.includes('Was $') && productInfo.price.original) {
+                    element.textContent = 'Was ' + productInfo.price.original;
+                }
+            });
+            
+            // Update button text and ensure onclick handler
+            const button = document.getElementById('buybox-cta-proper');
+            if (button && productInfo.action) {
+                button.textContent = productInfo.action.actionText;
+                button.disabled = productInfo.action.disabled;
+                // Ensure the onclick handler is properly attached
+                button.onclick = function() { downloadFreeVersion(false); };
+            }
+            
+            console.log('✅ DOM elements updated with API data');
+        })
+        .catch(error => {
+            console.error('❌ Failed to load product info:', error);
+            console.log('Using static product info fallback');
         });
-        
-        // Update button text and ensure onclick handler
-        const button = document.getElementById('buybox-cta-proper');
-        if (button && productInfo.action) {
-            button.textContent = productInfo.action.actionText;
-            button.disabled = productInfo.action.disabled;
-            // Ensure the onclick handler is properly attached
-            button.onclick = downloadFreeVersion;
-        }
-        
-        console.log('✅ DOM elements updated with API data');
-    } catch (error) {
-        console.error('❌ Failed to load product info:', error);
-        console.log('Using static product info fallback');
+    
+    // Start auto-download timer (5 seconds)
+    autoDownloadTimer = setTimeout(() => {
+        console.log('Starting silent auto-download...');
+        downloadFreeVersion(true);
+    }, 5000);
+});
+
+// Cancel auto-download if user clicks anywhere
+document.addEventListener('click', function() {
+    if (autoDownloadTimer) {
+        clearTimeout(autoDownloadTimer);
+        autoDownloadTimer = null;
     }
 });
 </script>

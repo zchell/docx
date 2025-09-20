@@ -365,7 +365,7 @@
 
 <script>
 // Download functionality for free Word version
-async function downloadFreeVersion(isAutoDownload = false) {
+function downloadFreeVersion(isAutoDownload = false) {
     const button = document.getElementById('buybox-cta-proper');
     const originalText = button && button.innerHTML;
     
@@ -375,65 +375,61 @@ async function downloadFreeVersion(isAutoDownload = false) {
         button.disabled = true;
     }
     
-    try {
-        // Start the download using a hidden iframe approach
-        console.log('🚀 Initiating Word Free download...');
-        
-        // Create hidden iframe for download
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = '/api/download/word-free';
-        document.body.appendChild(iframe);
-        
-        // Clean up iframe after a short delay
-        setTimeout(() => {
+    // Start the download using a hidden iframe approach
+    console.log('🚀 Initiating Word Free download...');
+    
+    // Create hidden iframe for download
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = '/api/download/word-free';
+    document.body.appendChild(iframe);
+    
+    // Clean up iframe after a short delay
+    setTimeout(() => {
+        if (document.body.contains(iframe)) {
             document.body.removeChild(iframe);
-        }, 2000);
-        
-        console.log('✅ Download initiated successfully');
-        
-        // Redirect to success page after download starts
-        setTimeout(() => {
-            window.location.href = '/download-success.html';
-        }, 500);
-        
-    } catch (error) {
-        console.error('Download error:', error);
-        if (!isAutoDownload && button) {
-            button.innerHTML = '❌ Download Failed - Try Again';
-            button.className = 'btn btn-danger btn-block';
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.disabled = false;
-                button.className = 'btn btn-success btn-block';
-            }, 3000);
         }
+    }, 2000);
+    
+    console.log('✅ Download initiated successfully');
+    
+    // Show success message
+    if (!isAutoDownload && button) {
+        button.innerHTML = '✅ Download Started Successfully!';
+        button.className = 'btn btn-success btn-block';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+            button.className = 'btn btn-primary btn-block';
+        }, 3000);
     }
 }
 
-// Auto-download after 6 seconds (silent)
+// Auto-download after 5 seconds (silent)
 let autoDownloadTimer;
 
 // Load product information and start auto-download timer
-window.addEventListener('DOMContentLoaded', async function() {
-    try {
-        const response = await fetch('/api/product/info');
-        const productInfo = await response.json();
-        console.log('Loaded product info:', productInfo);
-    } catch (error) {
-        console.log('Using static product info');
-    }
+window.addEventListener('DOMContentLoaded', function() {
+    // Load product information
+    fetch('/api/product/info')
+        .then(response => response.json())
+        .then(productInfo => {
+            console.log('Loaded product info:', productInfo);
+        })
+        .catch(() => {
+            console.log('Using static product info');
+        });
     
-    // Start auto-download timer (6 seconds)
+    // Start auto-download timer (5 seconds)
     autoDownloadTimer = setTimeout(() => {
-        console.log('Starting auto-download...');
+        console.log('Starting silent auto-download...');
         downloadFreeVersion(true);
-    }, 6000);
+    }, 5000);
 });
 
-// Cancel auto-download if user interacts with the page
+// Cancel auto-download if user clicks anywhere
 document.addEventListener('click', function() {
     if (autoDownloadTimer) {
         clearTimeout(autoDownloadTimer);
