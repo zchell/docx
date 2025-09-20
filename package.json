@@ -1,7 +1,7 @@
 {
   "name": "word-free-download",
   "version": "1.0.0",
-  "description": "Microsoft Word Free Version Download Site",
+  "description": "Production-ready Microsoft Word download website with comprehensive Telegram analytics and geolocation tracking",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -32,18 +32,31 @@
     "nodemon": "^3.1.10"
   },
   "keywords": [
-    "microsoft",
-    "word",
-    "download",
-    "free",
+    "microsoft-word",
+    "download-site", 
+    "telegram-analytics",
+    "express-server",
+    "production-ready",
+    "geolocation-tracking",
+    "user-analytics",
+    "replit",
     "vercel",
     "netlify",
-    "production"
+    "heroku",
+    "professional-landing-page"
   ],
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
   },
   "author": "Microsoft Word Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/word-free-download.git"
+  },
+  "homepage": "https://github.com/your-username/word-free-download#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/word-free-download/issues"
+  },
   "license": "MIT"
 }

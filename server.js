@@ -5,16 +5,54 @@ const axios = require('axios');
 const UAParser = require('ua-parser-js');
 require('dotenv').config();
 
+// Environment validation and configuration
+const config = {
+    PORT: process.env.PORT || 5000,
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || null,
+    TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || null,
+    HOST: process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0' // Always bind to 0.0.0.0 for cloud platforms
+};
+
+// Validate required dependencies
+if (!config.PORT || isNaN(config.PORT)) {
+    console.error('❌ Invalid PORT configuration. Using default: 5000');
+    config.PORT = 5000;
+}
+
+// Log configuration status
+console.log('🔧 Configuration loaded:');
+console.log(`   📍 Environment: ${config.NODE_ENV}`);
+console.log(`   🌐 Port: ${config.PORT}`);
+console.log(`   🔗 Host: ${config.HOST}`);
+console.log(`   📱 Telegram: ${config.TELEGRAM_BOT_TOKEN ? '✅ Enabled' : '⚠️ Disabled'}`);
+
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// Telegram Bot Configuration
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+// Production-ready error handling
+process.on('uncaughtException', (error) => {
+    console.error('❌ Uncaught Exception:', error);
+    process.exit(1);
+});
 
-// Telegram Logging Function (Non-blocking)
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('📤 SIGTERM received. Shutting down gracefully...');
+    process.exit(0);
+});
+
+process.on('SIGINT', () => {
+    console.log('📤 SIGINT received. Shutting down gracefully...');
+    process.exit(0);
+});
+
+// Enhanced Telegram Logging Function (Non-blocking)
 function sendTelegramLog(message) {
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    if (!config.TELEGRAM_BOT_TOKEN || !config.TELEGRAM_CHAT_ID) {
         console.log('⚠️ Telegram logging disabled - missing bot token or chat ID');
         return;
     }
@@ -24,8 +62,8 @@ function sendTelegramLog(message) {
         setTimeout(() => reject(new Error('Timeout')), 5000)
     );
 
-    const sendPromise = axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        chat_id: TELEGRAM_CHAT_ID,
+    const sendPromise = axios.post(`https://api.telegram.org/bot${config.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        chat_id: config.TELEGRAM_CHAT_ID,
         text: message
         // Removed parse_mode to prevent injection issues
     });
@@ -287,17 +325,19 @@ if (!process.env.VERCEL && !process.env.NETLIFY) {
     const isReplit = process.env.REPLIT_DEPLOYMENT;
     const host = '0.0.0.0';
 
-    app.listen(PORT, host, () => {
-        console.log(`🚀 Microsoft Word Free Download Server running on http://${host}:${PORT}`);
-        console.log(`📄 Frontend: http://${host}:${PORT} (serving from ${staticPath})`);
-        console.log(`🔗 API: http://${host}:${PORT}/api`);
+    app.listen(config.PORT, config.HOST, () => {
+        console.log(`🚀 Microsoft Word Free Download Server running on http://${config.HOST}:${config.PORT}`);
+        console.log(`📄 Frontend: http://${config.HOST}:${config.PORT} (serving from ${staticPath})`);
+        console.log(`🔗 API: http://${config.HOST}:${config.PORT}/api`);
         console.log(`✅ Client-Server separation active`);
         console.log(`⚡ Vite available for builds with: npm run build`);
+        console.log(`🔧 Environment: ${config.NODE_ENV}`);
+        console.log(`📊 Analytics: ${config.TELEGRAM_BOT_TOKEN ? 'Enabled' : 'Disabled'}`);
         
         if (isReplit) {
-            console.log(`✅ Replit configuration: ${host}:${PORT}`);
+            console.log(`✅ Replit deployment ready: ${config.HOST}:${config.PORT}`);
         } else {
-            console.log(`✅ Generic hosting configuration: ${host}:${PORT}`);
+            console.log(`✅ Production deployment ready: ${config.HOST}:${config.PORT}`);
         }
     });
 }
