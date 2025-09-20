@@ -1,0 +1,21 @@
+Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+ at C:/Users/Admins/Downloads/docx (1)/docx/client/index.html:1587:93
+1585|                              <span>Cancel</span>
+1586|                          </button>
+1587|                          <div id="meControl" class="c-me" data-signinsettings="{" containerid":"mecontrol","enabled":true,"headerheight":48,"debug":false,"extensiblelinks":[{"string":"for="" home","url":"https:="" www.office.com="" ?auth="1" ,"id":"global-office-account-personal"},{"string":"work,"="" school="" or="" university","url":"https:="" data-m='{"cn":"globalnav_account_cont","ct":"container","id":"c5c1c9c3m1r1a1","sn":5,"an":"c1c9c3m1r1a1"}'>
+   |                                                                                              ^
+1588|                              <div class="msame_Header">
+1589|                                  <div class="msame_Header_name st_msame_placeholder">Sign in</div>
+ at C:/Users/Admins/Downloads/docx (1)/docx/client/index.html:1587:93
+    at handleParseError (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+    at Parser.onParseError (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+    at Tokenizer._err (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+    at Tokenizer._stateAttributeName (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+    at Tokenizer._callState (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+    at Tokenizer._runParsingLoop (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+    at Tokenizer.write (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+    at Parser.parse (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+    at parse (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+    at traverseHtml (file:///C:/Users/Admins/Downloads/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.mjs.
