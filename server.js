@@ -97,7 +97,14 @@ function formatDownloadLog(userAgent, ip, referrer) {
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('client'));
+// Configure static files with no-cache headers for Replit
+app.use(express.static('client', {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    }
+}));
 
 // API Routes
 app.get('/api/download/word-free', (req, res) => {
@@ -193,4 +200,5 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`📄 Frontend: http://0.0.0.0:${PORT}`);
     console.log(`🔗 API: http://0.0.0.0:${PORT}/api`);
     console.log(`✅ Client-Server separation active`);
+    console.log(`✅ Replit configuration: 0.0.0.0:5000`);
 });
