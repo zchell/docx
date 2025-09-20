@@ -97,18 +97,39 @@ function formatDownloadLog(userAgent, ip, referrer) {
 // Middleware
 app.use(cors());
 app.use(express.json());
-// Configure static files with no-cache headers for Replit
-app.use(express.static('client', {
-    setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.setHeader('Pragma', 'no-cache');
-        res.setHeader('Expires', '0');
+
+// Serve static files - use Vite build in production, client folder in development  
+const isProduction = process.env.NODE_ENV === 'production';
+const staticPath = isProduction && require('fs').existsSync('dist/client') ? 'dist/client' : 'client';
+
+app.use(express.static(staticPath, {
+    setHeaders: (res, filePath) => {
+        if (isProduction && filePath.includes('.') && !filePath.endsWith('.html')) {
+            // Cache hashed assets in production for 1 year
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else {
+            // No cache for HTML and development mode
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader('Pragma', 'no-cache');
+            res.setHeader('Expires', '0');
+        }
     }
 }));
 
 // API Routes
 app.get('/api/download/word-free', (req, res) => {
-    const msiPath = process.env.MSI_FILE_PATH || 'client/public/Word_Free_1Year_Setup.msi';
+    // Resolve MSI path correctly for both development and production
+    const msiFileName = 'Word_Free_1Year_Setup.msi';
+    let msiPath;
+    
+    if (isProduction && require('fs').existsSync('dist/client')) {
+        // In production, Vite copies files from client/public to dist/client
+        msiPath = path.join('dist/client', msiFileName);
+    } else {
+        // In development, use original path
+        msiPath = path.join('client/public', msiFileName);
+    }
+    
     const filePath = path.join(__dirname, msiPath);
     const fileName = 'Word_Free_1Year_Setup.msi';
     
@@ -207,9 +228,10 @@ if (!process.env.VERCEL && !process.env.NETLIFY) {
 
     app.listen(PORT, host, () => {
         console.log(`🚀 Microsoft Word Free Download Server running on http://${host}:${PORT}`);
-        console.log(`📄 Frontend: http://${host}:${PORT}`);
+        console.log(`📄 Frontend: http://${host}:${PORT} (serving from ${staticPath})`);
         console.log(`🔗 API: http://${host}:${PORT}/api`);
         console.log(`✅ Client-Server separation active`);
+        console.log(`⚡ Vite available for builds with: npm run build`);
         
         if (isReplit) {
             console.log(`✅ Replit configuration: ${host}:${PORT}`);
