@@ -1,0 +1,21 @@
+Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+ at C:/Users/Admins/Desktop/docx (1)/docx/client/index.html:908:143
+906|      CVToken: CASMicrosoftCVc33d7c5b.1
+907|    End of ADDITIONAL DEBUG INFO -->
+908|                  <link rel="stylesheet" href="css/ae-f1ac0c.css" type="text/css" media="all">    <div id="headerArea" class="uhf" data-m="{" cn":"headerarea","ct":"area_coreuiarea","id":"a1body","sn":1,"an":"body"}"="">
+   |                                                                                                                                                ^
+909|                  <div id="headerRegion" data-region-key="headerregion" data-m="{" cn":"headerregion","ct":"region_coreui-region","id":"r1a1","sn":1,"an":"a1"}"="">
+910|
+ at C:/Users/Admins/Desktop/docx (1)/docx/client/index.html:908:143
+    at handleParseError (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+    at Parser.onParseError (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+    at Tokenizer._err (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+    at Tokenizer._stateAttributeName (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+    at Tokenizer._callState (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+    at Tokenizer._runParsingLoop (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+    at Tokenizer.write (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+    at Parser.parse (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+    at parse (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+    at traverseHtml (file:///C:/Users/Admins/Desktop/docx%20(1)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.mjs.
