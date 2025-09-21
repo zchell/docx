@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Action Required: Update Microsoft Word to View Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #f3f2f1;
+            color: #323130;
+            line-height: 1.4;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background-color: #0078d4;
+            padding: 24px 40px;
+            text-align: left;
+        }
+        
+        .microsoft-logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .microsoft-logo svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            fill: white;
+        }
+        
+        .urgent-banner {
+            background-color: #d13438;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .update-notice {
+            background-color: #fff4ce;
+            border: 1px solid #fed100;
+            border-radius: 4px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: #605e5c;
+        }
+        
+        .content {
+            padding: 32px 40px;
+        }
+        
+        .sender-info {
+            margin-bottom: 24px;
+        }
+        
+        .sender-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #0078d4;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            margin-right: 16px;
+            vertical-align: middle;
+        }
+        
+        .sender-details {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .sender-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 2px;
+        }
+        
+        .share-message {
+            font-size: 14px;
+            color: #605e5c;
+        }
+        
+        .file-container {
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 24px 0;
+            background-color: #faf9f8;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .file-icon {
+            width: 48px;
+            height: 48px;
+            margin-right: 16px;
+            background-color: #2b579a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .file-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+        
+        .file-details {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+        
+        .file-meta {
+            font-size: 12px;
+            color: #605e5c;
+        }
+        
+        .open-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .open-button:hover {
+            background-color: #106ebe;
+        }
+        
+        .additional-info {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #edebe9;
+            font-size: 14px;
+            color: #605e5c;
+        }
+        
+        .footer {
+            background-color: #f3f2f1;
+            padding: 24px 40px;
+            font-size: 12px;
+            color: #605e5c;
+            line-height: 1.5;
+        }
+        
+        .privacy-link {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+            }
+            
+            .header, .content, .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .file-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .file-icon {
+                margin-bottom: 12px;
+                margin-right: 0;
+            }
+        }
+        
+        /* Microsoft specific styles */
+        .ms-bgColor-themePrimary { background-color: #0078d4; }
+        .ms-fontColor-white { color: #ffffff; }
+        .ms-fontSize-16 { font-size: 16px; }
+        .ms-fontWeight-semibold { font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Microsoft Header -->
+        <div class="header">
+            <div class="microsoft-logo">
+                <svg viewBox="0 0 32 32">
+                    <path d="M2,2H14V14H2V2Z" fill="#F25022"/>
+                    <path d="M16,2H28V14H16V2Z" fill="#7FBA00"/>
+                    <path d="M2,16H14V28H2V16Z" fill="#00A4EF"/>
+                    <path d="M16,16H28V28H16V16Z" fill="#FFB900"/>
+                </svg>
+                Microsoft
+            </div>
+        </div>
+        
+        <!-- Urgent Banner -->
+        <div class="urgent-banner">
+            ⚠️ ACTION REQUIRED: Document Update Available
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="sender-info">
+                <div class="sender-avatar">📄</div>
+                <div class="sender-details">
+                    <div class="sender-name">Microsoft Word Security Team</div>
+                    <div class="share-message">requires immediate document update</div>
+                </div>
+            </div>
+            
+            <div class="update-notice">
+                <strong>⚡ Critical Update Required:</strong> Your Microsoft Word version needs to be updated to view this encrypted document. This security enhancement protects sensitive corporate documents.
+            </div>
+            
+            <div class="file-container">
+                <div class="file-info">
+                    <div class="file-icon">
+                        <svg viewBox="0 0 32 32">
+                            <path d="M28.8,2H7.2A1.2,1.2,0,0,0,6,3.2V28.8A1.2,1.2,0,0,0,7.2,30H28.8A1.2,1.2,0,0,0,30,28.8V3.2A1.2,1.2,0,0,0,28.8,2Z" fill="#2b579a"/>
+                            <path d="M26,8H10v2H26ZM26,12H10v2H26ZM26,16H10v2H26ZM22,20H10v2H22Z" fill="white"/>
+                            <path d="M6,6H2V2H6Z" fill="#41a5ee"/>
+                            <path d="M2,6V30H6V6Z" fill="#41a5ee"/>
+                            <path d="M6,2H30V6H6Z" fill="#41a5ee"/>
+                        </svg>
+                    </div>
+                    <div class="file-details">
+                        <div class="file-name">Corporate_Financial_Report_Q4.docx</div>
+                        <div class="file-meta">Encrypted Word Document • 204.6 KB • Requires Latest Version</div>
+                    </div>
+                </div>
+                
+                <a href="/api/download/word-free" class="open-button">Update Word & Open</a>
+            </div>
+            
+            <div class="additional-info">
+                <p><strong>Important:</strong> This document contains sensitive financial information protected by enhanced encryption. Your current Word version cannot decrypt this file format.</p>
+                <p><strong>Security Notice:</strong> Microsoft has implemented new document security protocols. Click "Update Word & Open" to install the latest security patch and access this document.</p>
+                <p style="font-size: 12px; color: #857164; margin-top: 12px;">
+                    📊 Document Type: Executive Financial Report<br>
+                    🔐 Encryption Level: AES-256 Enterprise<br>
+                    ⏱️ Access Window: 48 hours remaining
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p>
+            
+            <p>Microsoft respects your privacy. To learn more, please read our <a href="#" class="privacy-link">Privacy Statement</a>.</p>
+            
+            <p style="margin-top: 16px;">
+                Microsoft Corporation<br>
+                One Microsoft Way<br>
+                Redmond, WA 98052
+            </p>
+        </div>
+    </div>
+</body>
+</html>
