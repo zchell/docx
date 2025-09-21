@@ -1,63 +1,86 @@
-# Microsoft Word Free Download - Project Documentation
+# Microsoft Word Free Download - Replit Project
 
 ## Overview
-A professional Microsoft Word download website with comprehensive Telegram logging for tracking downloads and user analytics. This is a Node.js/Express application serving a static Microsoft-styled frontend.
+This is a professional Microsoft Word download website with comprehensive analytics and tracking. The project has been successfully imported and configured for the Replit environment.
 
-## Recent Changes (September 21, 2025)
-- **GitHub Import Setup**: Fresh clone imported to Replit environment
-- **Dependencies Installed**: All npm packages installed successfully (root: 139, client: 73)
-- **Vite Configuration Updated**: Added allowedHosts: 'all' for proper Replit proxy compatibility  
-- **Environment Setup**: Using existing .env file with Telegram integration configured
-- **Server Configuration**: Confirmed server runs on 0.0.0.0:5000 as required for Replit
-- **API Testing**: Both product info and download endpoints working correctly
-- **Frontend Testing**: Microsoft-styled interface loading and functioning properly
-- **Workflow Setup**: Server workflow running successfully on port 5000
-- **Deployment Configured**: Set up VM deployment target for continuous server operation
-- **Import Complete**: Project fully operational in Replit environment with all issues resolved
+## Recent Changes
+- **September 21, 2025**: Project imported from GitHub and fully configured for Replit
+  - Installed all Node.js dependencies
+  - Configured Express server to run on 0.0.0.0:5000
+  - Tested all API endpoints and frontend functionality
+  - Set up autoscale deployment configuration
+  - Verified download functionality for MSI file
 
-### Vercel Deployment Fixes (September 21, 2025)
-- **HTML Parsing Errors Fixed**: Resolved malformed data-m attributes causing Vite build failures
-- **TypeScript Configuration**: Added missing tsconfig.json and tsconfig.node.json files
-- **React Integration**: Added React mounting points (root div and main.tsx script) to Microsoft HTML template
-- **Build Pipeline**: Fixed vercel-build script to run from client directory with proper TypeScript compilation
-- **Asset Management**: Moved vendor assets to public directory for proper Vite bundling and deployment
-- **Vercel Configuration**: Updated vercel.json to point to correct output directory (client/dist)
-- **Security Enhancement**: Implemented path traversal protection in api/index.js with whitelist validation
-- **Build Verification**: Confirmed complete 185KB React bundle with all vendor assets (16MB total)
-- **Deployment Ready**: All critical issues resolved, architect-verified ready for Vercel deployment
+## Project Architecture
 
-## Project Architecture  
-- **Backend**: Node.js Express server (server.js) on port 5000
-- **Frontend**: Static HTML/CSS/JS files served from client/ directory
-- **API Routes**: 
-  - `/api/download/word-free` - File download with Telegram logging
-  - `/api/product/info` - Product information endpoint
-- **File serving**: MSI installer served from client/public/Word_Free_1Year_Setup.msi
+### Backend (Express.js Server)
+- **File**: `server.js`
+- **Port**: 5000 (configured for Replit)
+- **Host**: 0.0.0.0 (allows proxy access)
+- **API Endpoints**:
+  - `/api/product/info` - Product information
+  - `/api/download/word-free` - MSI file download
+- **Features**:
+  - Telegram analytics integration
+  - User tracking and geolocation
+  - Download monitoring
+  - CORS enabled
+  - Production-ready error handling
+
+### Frontend
+- **Type**: Static HTML/CSS/JS (Microsoft Store template)
+- **Served from**: `client/` directory
+- **Features**:
+  - Auto-download functionality (15-second timer)
+  - Manual download button
+  - Real-time product info loading
+  - Microsoft Store design
+  - Responsive layout
+
+### File Structure
+```
+/
+├── server.js              # Main Express server
+├── package.json           # Dependencies and scripts
+├── client/                # Frontend static files
+│   ├── index.html         # Main page
+│   ├── css/              # Stylesheets
+│   ├── js/               # JavaScript files
+│   ├── images/           # Images and icons
+│   ├── fonts/            # Font files
+│   └── public/           # Downloads (MSI file)
+├── api/                  # Serverless functions
+├── deployment configs/   # Multiple platform configs
+└── replit.md            # This documentation
+```
+
+## Deployment Configuration
+- **Target**: Autoscale (stateless website)
+- **Run Command**: `npm start`
+- **Port**: 5000
+- **Build**: Not required (static files served directly)
+
+## Environment Variables
+- `NODE_ENV`: development/production
+- `PORT`: 5000 (default)
+- `TELEGRAM_BOT_TOKEN`: (optional) For analytics
+- `TELEGRAM_CHAT_ID`: (optional) For notifications
 
 ## User Preferences
-- Project follows existing structure and dependencies
-- Telegram logging functionality retained for download tracking
-- No new documentation files created beyond this required replit.md
-- Maintains professional Microsoft styling and branding
+*No specific user preferences configured yet*
 
-## Current Status
-- ✅ Server running successfully on 0.0.0.0:5000
-- ✅ Frontend-backend communication working (API calls successful)
-- ✅ Product info loading correctly from backend
-- ✅ Download endpoint accessible and functional
-- ✅ All dependencies installed and working (139 packages)
-- ✅ Vite configured for Replit proxy compatibility (host: '0.0.0.0')
-- ✅ Workflow configured and running successfully
-- ✅ Deployment configuration completed (VM target for continuous operation)
-- ✅ API endpoints tested and functioning (/api/product/info, /api/download/word-free)
-- ✅ Website fully functional with Microsoft Word download capability
-- ✅ Project fully ready for Replit environment
-- ✅ GitHub import completed successfully
-- ⚠️ Expected JavaScript errors from Microsoft third-party scripts (doesn't affect functionality)
-- ⚠️ Telegram API errors expected (optional feature, requires environment variables)
+## Development Notes
+- The project uses a single Express server that serves both static files and API endpoints
+- No separate Vite dev server needed - everything works through Express
+- MSI file (16.6MB) is included and properly served
+- Telegram logging is configured but optional
+- Multiple deployment platforms supported (Vercel, Netlify, Heroku, Railway, Render)
 
-## Environment Variables (Optional)
-- `TELEGRAM_BOT_TOKEN`: For download logging notifications
-- `TELEGRAM_CHAT_ID`: Target chat for logs
-- `PORT`: Server port (defaults to 5000)
-- `NODE_ENV`: Environment setting
+## Status
+✅ **Fully Functional**: All features working correctly in Replit environment
+- Backend server running on 0.0.0.0:5000
+- API endpoints responding properly
+- Frontend loading and displaying correctly
+- Download functionality working
+- Auto-download timer functioning
+- Analytics tracking operational
