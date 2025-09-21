@@ -1,0 +1,205 @@
+\Users\Admins\Downloads\docx (3)\docx>npx vite --port 5000
+
+  VITE v6.3.6  ready in 536 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: http://147.124.205.12:5000/
+  ➜  press h + enter to show help
+Error: The following dependencies are imported but could not be resolved:
+
+  react (imported by C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/LoadingSpinner.tsx)
+  react-dom/client (imported by C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx)
+  @tanstack/react-query (imported by C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ProductPage.tsx)
+
+Are they installed?
+    at file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:14849:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:47003:28
+3:45:52 AM [vite] Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+3:45:52 AM [vite] Internal server error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+      at TransformPluginContext._formatLog (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42517:41)
+      at TransformPluginContext.error (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42514:16)
+      at normalizeUrl (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40493:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40612:37
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40539:7)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42312:18)
+      at async loadAndTransform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:35738:27)
+3:45:52 AM [vite] Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+3:45:52 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/App.tsx:6:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import ProductPage from "./components/ProductPage";
+  3  |  function App() {
+3:45:52 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ProductPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ProductPage.tsx:73:11
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import { useState } from "react";
+  3  |  import { useQuery } from "@tanstack/react-query";
+3:45:53 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/LoadingSpinner.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/LoadingSpinner.tsx:8:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/LoadingSpinner.module.css";
+  3  |  const LoadingSpinner = () => {
+3:45:53 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ErrorMessage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ErrorMessage.tsx:12:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/ErrorMessage.module.css";
+  3  |  const ErrorMessage = ({ message }) => {
+Proxy error: connect EADDRINUSE 127.0.0.1:5000
+3:46:15 AM [vite] http proxy error: /api/download/word-free
+Error: connect EADDRINUSE 127.0.0.1:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+Proxy error: connect EADDRINUSE 127.0.0.1:5000
+3:46:23 AM [vite] http proxy error: /api/product/info
+Error: connect EADDRINUSE 127.0.0.1:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+3:58:05 AM [vite] Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+3:58:05 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/App.tsx:6:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import ProductPage from "./components/ProductPage";
+  3  |  function App() {
+3:58:05 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ProductPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ProductPage.tsx:73:11
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import { useState } from "react";
+  3  |  import { useQuery } from "@tanstack/react-query";
+3:58:05 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/LoadingSpinner.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/LoadingSpinner.tsx:8:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/LoadingSpinner.module.css";
+  3  |  const LoadingSpinner = () => {
+3:58:05 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ErrorMessage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ErrorMessage.tsx:12:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/ErrorMessage.module.css";
+  3  |  const ErrorMessage = ({ message }) => {
+3:58:06 AM [vite] Internal server error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+      at TransformPluginContext._formatLog (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42517:41)
+      at TransformPluginContext.error (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42514:16)
+      at normalizeUrl (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40493:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40612:37
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:40539:7)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:42312:18)
+      at async loadAndTransform (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:35738:27)
+      at async viteTransformMiddleware (file:///C:/Users/Admins/Downloads/docx%20(3)/docx/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:37253:24)
+3:58:06 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/App.tsx:6:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import ProductPage from "./components/ProductPage";
+  3  |  function App() {
+3:58:06 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ProductPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ProductPage.tsx:73:11
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import { useState } from "react";
+  3  |  import { useQuery } from "@tanstack/react-query";
+3:58:06 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/LoadingSpinner.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/LoadingSpinner.tsx:8:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/LoadingSpinner.module.css";
+  3  |  const LoadingSpinner = () => {
+3:58:06 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ErrorMessage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ErrorMessage.tsx:12:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/ErrorMessage.module.css";
+  3  |  const ErrorMessage = ({ message }) => {
+3:58:35 AM [vite] Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/main.tsx:20:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import React from "react";
+  3  |  import ReactDOM from "react-dom/client";
+3:58:35 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/App.tsx:6:6
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import ProductPage from "./components/ProductPage";
+  3  |  function App() {
+3:58:35 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ProductPage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ProductPage.tsx:73:11
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import { useState } from "react";
+  3  |  import { useQuery } from "@tanstack/react-query";
+3:58:35 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/LoadingSpinner.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/LoadingSpinner.tsx:8:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/LoadingSpinner.module.css";
+  3  |  const LoadingSpinner = () => {
+3:58:35 AM [vite] (client) Pre-transform error: Failed to resolve import "react/jsx-dev-runtime" from "client/src/components/ErrorMessage.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Admins/Downloads/docx (3)/docx/client/src/components/ErrorMessage.tsx:12:8
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+     |                          ^
+  2  |  import styles from "../styles/ErrorMessage.module.css";
+  3  |  const ErrorMessage = ({ message }) => {
+Proxy error: connect EADDRINUSE 127.0.0.1:5000
+3:58:40 AM [vite] http proxy error: /api/product/info
+Error: connect EADDRINUSE 127.0.0.1:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+
+
+
