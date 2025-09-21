@@ -1729,55 +1729,88 @@ section.buy-box,
 }
 </style>
 
-<!-- Updated Pricing Section -->
-<div class="col-lg-3 download-box-right-col" style="display: block !important; position: relative; z-index: 999;">
-    <div class="pb-4 pr-lg-4">
-        <!-- Pricing Display -->
-        <div class="pricing-section mb-4">
-            <h2 class="h1 font-weight-bold text-primary mb-3" data-automation-test-id="buy-box-price" style="color: #0078d4;">
-                Free for 1 Year
-            </h2>
-            <div class="pricing-details mb-3">
-                <p class="mb-1">
-                    <small class="text-muted" style="text-decoration: line-through;">Was $179.99</small>
-                </p>
-                <p class="mb-0">
-                    <small class="font-weight-bold" style="color: #107c10;">Save $179.99</small>
-                </p>
+<!-- Product Layout Section - Matching Reference Design -->
+<div class="container" style="background: #ffffff; border-radius: 8px; padding: 40px; box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05); margin-bottom: 20px;">
+    <div class="row">
+        <!-- Left Section - Product Info -->
+        <div class="col-lg-8 col-md-7">
+            <div class="d-flex align-items-start mb-4">
+                <!-- Word Icon -->
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/B00-Word-Product-Icon?wid=100&hei=100&fit=crop" 
+                     alt="Microsoft Word" 
+                     style="width: 100px; height: 100px; object-fit: contain; margin-right: 20px; flex-shrink: 0;">
+                
+                <!-- Title Area -->
+                <div>
+                    <h1 style="font-size: 2.5rem; font-weight: 600; color: #323130; margin: 0 0 8px 0; line-height: 1.2;">Word</h1>
+                    <p style="font-size: 1rem; color: #605e5c; margin: 0; font-weight: 400;">Microsoft Corporation</p>
+                </div>
+            </div>
+            
+            <!-- Features List -->
+            <div style="margin-bottom: 16px;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="position: relative; padding-left: 20px; color: #323130; font-size: 1rem; line-height: 1.5; margin-bottom: 8px;">
+                        <span style="position: absolute; left: 0; color: #323130; font-weight: bold;">•</span>
+                        For 1 PC or Mac
+                    </li>
+                    <li style="position: relative; padding-left: 20px; color: #323130; font-size: 1rem; line-height: 1.5; margin-bottom: 8px;">
+                        <span style="position: absolute; left: 0; color: #323130; font-weight: bold;">•</span>
+                        Create beautiful and engaging documents
+                    </li>
+                    <li style="position: relative; padding-left: 20px; color: #323130; font-size: 1rem; line-height: 1.5; margin-bottom: 8px;">
+                        <span style="position: absolute; left: 0; color: #323130; font-weight: bold;">•</span>
+                        Share your documents with others and edit together in real time*
+                    </li>
+                    <li style="position: relative; padding-left: 20px; color: #323130; font-size: 1rem; line-height: 1.5; margin-bottom: 8px;">
+                        <span style="position: absolute; left: 0; color: #323130; font-weight: bold;">•</span>
+                        Compatible with Windows 11, Windows 10, or macOS
+                    </li>
+                </ul>
+                <p style="font-size: 0.875rem; color: #605e5c; margin: 16px 0 0 0; font-style: italic;">*Files must be shared from OneDrive.</p>
             </div>
         </div>
         
-        <!-- Download Button -->
-        <div class="download-box-buttons mb-4">
-            <button class="btn btn-primary btn-block btn-lg" 
-                    id="buybox-cta-proper" 
-                    aria-label="Word - Download Free Version" 
-                    onclick="downloadFreeVersion()" 
-                    data-automation-test-id="buy-box-button"
-                    style="background-color: #0078d4; border-color: #0078d4; padding: 12px 24px;">
-                Download Free Version
-            </button>
-        </div>
-        
-        <!-- Features List -->
-        <div class="features-list">
-            <ul class="list-unstyled">
-                <li class="mb-2">
-                    <span class="text-success mr-2">✓</span>
-                    Free 1-year license included
-                </li>
-                <li class="mb-2">
-                    <span class="text-success mr-2">✓</span>
-                    Compatible with Windows & Mac
-                </li>
-                <li class="mb-2">
-                    <span class="text-success mr-2">✓</span>
-                    Full Microsoft Word functionality
-                </li>
-            </ul>
+        <!-- Right Section - Pricing -->
+        <div class="col-lg-4 col-md-5">
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+                <!-- Price Display -->
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div style="font-size: 2.25rem; font-weight: 600; color: #0067b8; line-height: 1.2;" data-automation-test-id="buy-box-price">Free for 1 Year</div>
+                    <small class="text-muted" style="font-size: 1rem; color: #605e5c; text-decoration: line-through;">Was $179.99</small>
+                    <div style="font-size: 1rem; color: #107c10; font-weight: 600;">Save $179.99</div>
+                </div>
+                
+                <!-- Download Button -->
+                <button class="btn btn-primary btn-block" 
+                        id="buybox-cta-proper" 
+                        aria-label="Word - Download Free Version"
+                        onclick="downloadFreeVersion()" 
+                        data-automation-test-id="buy-box-button"
+                        style="background: #0067b8; color: #ffffff; border: none; padding: 16px 24px; font-size: 1rem; font-weight: 600; border-radius: 4px; min-height: 48px; width: 100%;">
+                    Download Free Version
+                </button>
+                
+                <!-- Checked Features -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="font-size: 0.875rem; color: #323130; display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #107c10; font-weight: bold;">✓</span>
+                        Free 1-year license included
+                    </div>
+                    <div style="font-size: 0.875rem; color: #323130; display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #107c10; font-weight: bold;">✓</span>
+                        Compatible with Windows & Mac
+                    </div>
+                    <div style="font-size: 0.875rem; color: #323130; display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #107c10; font-weight: bold;">✓</span>
+                        Full Microsoft Word functionality
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 </div><div class="material-color-neutral-100"><div class="d-flex flex-wrap py-4 bg-neutral-100 bg-md-transparent" data-automation-test-id="buy-box-bundle-layout"><section class="col-12 px-md-4 col-md-9"><div class="mb-2"><span class="badge bg-yellow" data-automation-test-id="buy-box-upsell-promo-banner-badge-text">Best value</span></div><h2 class="h3" data-automation-test-id="buy-box-upsell-promo-banner-heading">Save when you get Word with Microsoft 365</h2><p class="mb-4" data-automation-test-id="buy-box-upsell-promo-banner-body">With Microsoft 365 you get Word plus Excel, PowerPoint, Outlook, and 1 TB of cloud storage per person for all your files, music, photos, videos, and more. Share and collaborate with others across all your devices.                            </p><ul class="d-inline-flex flex-wrap buy-box-bundle-thumbs list-inline mb-0 mt-2" data-automation-test-id="buy-box-upsell-promo-banner-logos"><li class="d-flex pb-3 align-items-center"><div class="d-flex flex-column align-items-center mr-3"><img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_Word_36x36_2x?fmt=png-alpha" alt="" data-automation-test-id="buy-box-upsell-promo-banner-logo-img"><div class="small" data-automation-test-id="buy-box-upsell-promo-banner-logo-title">Word</div></div><div class="glyph-prepend glyph-prepend-add mr-3" aria-hidden="true"></div></li><li class="d-flex pb-3 align-items-center"><div class="d-flex flex-column align-items-center mr-3"><img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_Excel_36x36_2x?fmt=png-alpha" alt="" data-automation-test-id="buy-box-upsell-promo-banner-logo-img"><div class="small" data-automation-test-id="buy-box-upsell-promo-banner-logo-title">Excel</div></div><div class="glyph-prepend glyph-prepend-add mr-3" aria-hidden="true"></div></li><li class="d-flex pb-3 align-items-center"><div class="d-flex flex-column align-items-center mr-3"><img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_PowerPoint_36x36_2x?fmt=png-alpha" alt="" data-automation-test-id="buy-box-upsell-promo-banner-logo-img"><div class="small" data-automation-test-id="buy-box-upsell-promo-banner-logo-title">PowerPoint</div></div><div class="glyph-prepend glyph-prepend-add mr-3" aria-hidden="true"></div></li><li class="d-flex pb-3 align-items-center"><div class="d-flex flex-column align-items-center mr-3"><img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_Outlook_36x36_2x?fmt=png-alpha" alt="" data-automation-test-id="buy-box-upsell-promo-banner-logo-img"><div class="small" data-automation-test-id="buy-box-upsell-promo-banner-logo-title">Outlook</div></div><div class="glyph-prepend glyph-prepend-add mr-3" aria-hidden="true"></div></li><li class="d-flex pb-3 align-items-center"><div class="d-flex flex-column align-items-center mr-3"><img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_OneDrive_36x36_2x?fmt=png-alpha" alt="" data-automation-test-id="buy-box-upsell-promo-banner-logo-img"><div class="small" data-automation-test-id="buy-box-upsell-promo-banner-logo-title">OneDrive</div></div></li></ul></section><section class="col-12 col-md-3 px-md-4" data-automation-test-id="buy-box-upsell-column-right"><button class="btn btn-secondary btn-block mr-1" disabled>Premium Version Available</button><button class="btn btn-secondary btn-block mr-1" disabled>Upgrade Options Available</button></section></div></div></section><div style="padding-top:48px"></div></div>
                         
                 
