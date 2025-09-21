@@ -1,0 +1,84 @@
+[04:09:48.966] Running build in Washington, D.C., USA (East) – iad1
+[04:09:48.967] Build machine configuration: 2 cores, 8 GB
+[04:09:48.983] Cloning github.com/zchell/docx (Branch: main, Commit: 2c44d86)
+[04:09:49.127] Previous build caches not available
+[04:09:50.568] Cloning completed: 1.585s
+[04:09:50.968] Running "vercel build"
+[04:09:51.377] Vercel CLI 48.0.2
+[04:09:52.195] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[04:09:52.201] Installing dependencies...
+[04:09:55.385] 
+[04:09:55.386] > word-free-download@1.0.0 postinstall
+[04:09:55.386] > node build.js
+[04:09:55.386] 
+[04:09:55.419] [1m🚀 Microsoft Word Free Download - Full Stack Build[0m
+[04:09:55.420] [36m════════════════════════════════════════════════════════════[0m
+[04:09:55.420] [36m
+[04:09:55.421] 🔍 Validating Project Structure...[0m
+[04:09:55.421] [32m✅ Directory exists: client[0m
+[04:09:55.421] [32m✅ Directory exists: client/css[0m
+[04:09:55.421] [32m✅ Directory exists: client/js[0m
+[04:09:55.421] [32m✅ Directory exists: client/images[0m
+[04:09:55.422] [32m✅ Directory exists: client/fonts[0m
+[04:09:55.422] [32m✅ Directory exists: client/public[0m
+[04:09:55.422] [32m✅ File exists: server.js[0m
+[04:09:55.422] [32m✅ File exists: package.json[0m
+[04:09:55.423] [32m✅ File exists: client/index.html[0m
+[04:09:55.423] [32m✅ File exists: client/public/Word_Free_1Year_Setup.msi[0m
+[04:09:55.423] [32m✅ File exists: .env.example[0m
+[04:09:55.423] [36m
+[04:09:55.423] 📦 Checking Dependencies...[0m
+[04:09:55.423] [34mℹ️  Production dependencies: 9[0m
+[04:09:55.424] [34mℹ️  Development dependencies: 1[0m
+[04:09:55.424] [32m✅ All required dependencies present[0m
+[04:09:55.424] [36m
+[04:09:55.424] 🌍 Environment Setup...[0m
+[04:09:55.424] [32m✅ .env.example found[0m
+[04:09:55.424] [32m✅ .env file present[0m
+[04:09:55.425] [36m
+[04:09:55.425] 🎨 Optimizing CSS...[0m
+[04:09:55.425] [34mℹ️  Found 11 CSS files[0m
+[04:09:55.425] [32m✅ Enhanced styling file present[0m
+[04:09:55.425] [36m
+[04:09:55.425] 🔧 Validating JavaScript...[0m
+[04:09:55.425] [34mℹ️  Found 19 JavaScript files[0m
+[04:09:55.426] [32m✅ Download functionality present in HTML[0m
+[04:09:55.426] [36m
+[04:09:55.426] 🖼️  Optimizing Assets...[0m
+[04:09:55.426] [34mℹ️  client/images: 4 files[0m
+[04:09:55.426] [34mℹ️  client/fonts: 35 files[0m
+[04:09:55.426] [34mℹ️  client/public: 3 files[0m
+[04:09:55.427] [32m✅ MSI file ready: 16204.00 KB[0m
+[04:09:55.427] [36m
+[04:09:55.427] 🚀 Development Server Check...[0m
+[04:09:55.427] [33m⚠️  Server might not be configured for Replit[0m
+[04:09:55.427] [32m✅ Telegram logging functionality present[0m
+[04:09:55.427] [32m✅ MSI file path configured correctly[0m
+[04:09:55.428] [35m
+[04:09:55.428] 📊 Build Report[0m
+[04:09:55.428] [35m══════════════════════════════════════════════════[0m
+[04:09:55.428] [36mBuild Time: 5ms[0m
+[04:09:55.428] [32mErrors: 0[0m
+[04:09:55.428] [33mWarnings: 1[0m
+[04:09:55.428] [33m
+[04:09:55.429] Warnings:[0m
+[04:09:55.429] [33m  • Server might not be configured for Replit[0m
+[04:09:55.429] [35m
+[04:09:55.429] ══════════════════════════════════════════════════[0m
+[04:09:55.429] [32m✅ Build completed successfully! 🎉[0m
+[04:09:55.435] 
+[04:09:55.435] added 138 packages in 3s
+[04:09:55.438] 
+[04:09:55.438] 30 packages are looking for funding
+[04:09:55.438]   run `npm fund` for details
+[04:09:55.473] Running "npm run vercel-build"
+[04:09:55.580] 
+[04:09:55.580] > word-free-download@1.0.0 vercel-build
+[04:09:55.580] > cd client && npm run build
+[04:09:55.580] 
+[04:09:55.689] 
+[04:09:55.690] > word-free-download-client@1.0.0 build
+[04:09:55.690] > tsc && vite build
+[04:09:55.690] 
+[04:09:55.701] sh: line 1: tsc: command not found
+[04:09:55.715] Error: Command "npm run vercel-build" exited with 127

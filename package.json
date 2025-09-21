@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "validate": "node build.js --validate",
     "postinstall": "node build.js",
-    "vercel-build": "cd client && npm run build",
+    "vercel-build": "npm run build",
     "heroku-postbuild": "NODE_ENV=production vite build",
     "deploy": "npm run build:prod"
   },
@@ -24,6 +24,7 @@
     "express": "^4.21.2",
     "path": "^0.12.7",
     "serverless-http": "^4.0.0",
+    "typescript": "^5.9.2",
     "ua-parser-js": "^2.0.5",
     "vite": "^6.3.6",
     "vite-express": "^0.21.1"
@@ -33,7 +34,7 @@
   },
   "keywords": [
     "microsoft-word",
-    "download-site", 
+    "download-site",
     "telegram-analytics",
     "express-server",
     "production-ready",

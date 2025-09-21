@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // Environment validation and configuration
 const config = {
-    PORT: process.env.PORT || 5000,
+    PORT: process.env.PORT || 3001,
     NODE_ENV: process.env.NODE_ENV || 'development',
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || null,
     TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || null,
