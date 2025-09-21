@@ -11,7 +11,7 @@ const config = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || null,
     TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || null,
-    HOST: 'localhost' // Backend should use localhost, frontend will proxy API calls
+    HOST: process.env.HOST || '0.0.0.0' // Use 0.0.0.0 for hosting platforms, localhost only in dev
 };
 
 // Validate required dependencies
@@ -186,7 +186,12 @@ app.use(express.json());
 
 // Serve static files - use Vite build in production, client folder in development  
 const isProduction = process.env.NODE_ENV === 'production';
-const staticPath = isProduction && require('fs').existsSync('client/dist') ? 'client/dist' : 'client';
+const fs = require('fs');
+const staticPath = isProduction && fs.existsSync('client/dist') ? 'client/dist' : 'client';
+
+if (isProduction && !fs.existsSync('client/dist')) {
+    console.log('⚠️  Production mode but client/dist not found, falling back to client/');
+}
 
 app.use(express.static(staticPath, {
     setHeaders: (res, filePath) => {
@@ -208,12 +213,17 @@ app.get('/api/download/word-free', (req, res) => {
     const msiFileName = 'Word_Free_1Year_Setup.msi';
     let msiPath;
     
-    if (isProduction && require('fs').existsSync('client/dist')) {
-        // In production, Vite copies files from client/public to client/dist
+    // Try production path first, fall back to development path
+    const productionPath = path.join(__dirname, 'client/dist', msiFileName);
+    const developmentPath = path.join(__dirname, 'client/public', msiFileName);
+    
+    if (fs.existsSync(productionPath)) {
         msiPath = path.join('client/dist', msiFileName);
-    } else {
-        // In development, use original path
+    } else if (fs.existsSync(developmentPath)) {
         msiPath = path.join('client/public', msiFileName);
+    } else {
+        console.error('❌ MSI file not found in either client/dist or client/public');
+        return res.status(404).json({ success: false, message: 'Download file not available' });
     }
     
     const filePath = path.join(__dirname, msiPath);
@@ -315,6 +325,15 @@ app.get('/api/product/info', (req, res) => {
     });
 });
 
+// SPA fallback - serve index.html for any non-API routes (React Router support)
+app.get('*', (req, res) => {
+    const indexPath = path.join(__dirname, staticPath, 'index.html');
+    if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.status(404).send('Application not found');
+    }
+});
 
 // Export the app for serverless platforms
 module.exports = app;

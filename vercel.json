@@ -5,14 +5,14 @@
       "destination": "/api/index?path=$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/client/dist/$1"
+      "source": "/((?!api|.*\\..*).*)",
+      "destination": "/index.html"
     }
   ],
   "functions": {
     "api/index.js": {
       "maxDuration": 30,
-      "includeFiles": "client/dist/Word_Free_1Year_Setup.msi"
+      "includeFiles": ["client/dist/Word_Free_1Year_Setup.msi", "client/public/Word_Free_1Year_Setup.msi"]
     }
   },
   "env": {

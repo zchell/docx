@@ -1,14 +1,14 @@
 [build]
   command = "npm run build"
   functions = "netlify/functions"
-  publish = "client"
+  publish = "client/dist"
 
 [build.environment]
   NODE_VERSION = "18"
 
 [functions]
   node_bundler = "esbuild"
-  included_files = ["client/public/Word_Free_1Year_Setup.msi"]
+  included_files = ["client/dist/Word_Free_1Year_Setup.msi", "client/public/Word_Free_1Year_Setup.msi"]
 
 [[redirects]]
   from = "/api/*"
