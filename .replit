@@ -15,26 +15,14 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Backend API Server"
+args = "Frontend Server"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "React Frontend"
+args = "Backend API"
 
 [[workflows.workflow]]
-name = "Backend API Server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "PORT=3001 npm start"
-waitForPort = 3001
-
-[workflows.workflow.metadata]
-outputType = "console"
-
-[[workflows.workflow]]
-name = "React Frontend"
+name = "Frontend Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -45,6 +33,18 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "Backend API"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "PORT=3001 npm start"
+waitForPort = 3001
+
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[ports]]
 localPort = 3000
 externalPort = 5000
@@ -52,10 +52,6 @@ externalPort = 5000
 [[ports]]
 localPort = 3001
 externalPort = 3001
-
-[[ports]]
-localPort = 5001
-externalPort = 6800
 
 [[ports]]
 localPort = 34319
