@@ -9,6 +9,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     strictPort: false,
+    allowedHosts: 'all',
     // Proxy API calls to your Express server
     proxy: {
       '/api': {
