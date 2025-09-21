@@ -6,13 +6,13 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/client/$1"
+      "destination": "/client/dist/$1"
     }
   ],
   "functions": {
     "api/index.js": {
       "maxDuration": 30,
-      "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
+      "includeFiles": "client/dist/Word_Free_1Year_Setup.msi"
     }
   },
   "env": {

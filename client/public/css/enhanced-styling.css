@@ -1,0 +1,155 @@
+/* Microsoft Word Free Download - Text Only Styling */
+
+/* Simple Text-Only Pricing Display */
+.dynamic-price-container {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 20px 0;
+    margin: 20px 0;
+    box-shadow: none;
+    color: inherit;
+    text-align: left;
+}
+
+.dynamic-price-container h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: none;
+}
+
+.dynamic-price-container .price-highlight {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: inherit;
+    text-shadow: none;
+    margin: 15px 0;
+    display: block;
+}
+
+.dynamic-price-container .original-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    opacity: 0.7;
+    margin-right: 10px;
+}
+
+.dynamic-price-container .savings-badge {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-weight: 400;
+    display: inline;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* Microsoft Blue Download Button */
+#buybox-cta-proper {
+    background: #0078d4 !important;
+    border: 1px solid #0078d4 !important;
+    border-radius: 2px !important;
+    padding: 11px 24px !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    box-shadow: none !important;
+    transition: all 0.1s ease-in-out !important;
+    position: relative !important;
+    overflow: visible !important;
+    margin: 25px 0 !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+}
+
+#buybox-cta-proper:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: #106ebe !important;
+    border-color: #106ebe !important;
+    color: #fff !important;
+}
+
+#buybox-cta-proper:active {
+    transform: none !important;
+    box-shadow: none !important;
+    background: #005a9e !important;
+    border-color: #005a9e !important;
+}
+
+#buybox-cta-proper:before {
+    display: none !important;
+}
+
+#buybox-cta-proper:hover:before {
+    display: none !important;
+}
+
+/* Success State Button - Keep Blue */
+#buybox-cta-proper.btn-success {
+    background: #0078d4 !important;
+    border-color: #0078d4 !important;
+    animation: none !important;
+}
+
+
+/* Loading Spinner Enhancement */
+.spinner-border-sm {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    margin-right: 10px !important;
+}
+
+/* Simple Text-Only Product Features */
+.product-features {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 20px 0;
+    backdrop-filter: none;
+}
+
+.product-features ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.product-features li {
+    padding: 4px 0;
+    position: relative;
+    padding-left: 0;
+}
+
+.product-features li:before {
+    display: none;
+}
+
+/* Simple Responsive Design */
+@media (max-width: 768px) {
+    .dynamic-price-container {
+        padding: 15px 0;
+        margin: 15px 0;
+    }
+    
+    .dynamic-price-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .dynamic-price-container .price-highlight {
+        font-size: 1.3rem;
+    }
+    
+    #buybox-cta-proper {
+        padding: 11px 24px !important;
+        font-size: 15px !important;
+        min-height: auto !important;
+    }
+}

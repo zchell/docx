@@ -17,7 +17,7 @@ interface BuyBoxProps {
   }
 }
 
-const BuyBox: React.FC<BuyBoxProps> = ({ price, action }) => {
+const BuyBox: React.FC<BuyBoxProps> = ({ action }) => {
   const [downloadState, setDownloadState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleDownload = async () => {

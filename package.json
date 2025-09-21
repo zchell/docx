@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "validate": "node build.js --validate",
     "postinstall": "node build.js",
-    "vercel-build": "NODE_ENV=production vite build",
+    "vercel-build": "cd client && npm run build",
     "heroku-postbuild": "NODE_ENV=production vite build",
     "deploy": "npm run build:prod"
   },
