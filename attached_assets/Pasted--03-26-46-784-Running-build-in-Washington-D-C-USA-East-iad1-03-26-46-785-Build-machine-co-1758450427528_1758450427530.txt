@@ -1,0 +1,102 @@
+[03:26:46.784] Running build in Washington, D.C., USA (East) – iad1
+[03:26:46.785] Build machine configuration: 2 cores, 8 GB
+[03:26:46.802] Cloning github.com/zchell/docx (Branch: main, Commit: 41f9bf7)
+[03:26:46.929] Previous build caches not available
+[03:26:48.125] Cloning completed: 1.323s
+[03:26:48.471] Running "vercel build"
+[03:26:48.833] Vercel CLI 48.0.2
+[03:26:49.518] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[03:26:49.523] Installing dependencies...
+[03:26:51.642] 
+[03:26:51.643] > word-free-download@1.0.0 postinstall
+[03:26:51.643] > node build.js
+[03:26:51.643] 
+[03:26:51.674] [1m🚀 Microsoft Word Free Download - Full Stack Build[0m
+[03:26:51.674] [36m════════════════════════════════════════════════════════════[0m
+[03:26:51.674] [36m
+[03:26:51.674] 🔍 Validating Project Structure...[0m
+[03:26:51.675] [32m✅ Directory exists: client[0m
+[03:26:51.675] [32m✅ Directory exists: client/css[0m
+[03:26:51.675] [32m✅ Directory exists: client/js[0m
+[03:26:51.675] [32m✅ Directory exists: client/images[0m
+[03:26:51.676] [32m✅ Directory exists: client/fonts[0m
+[03:26:51.676] [32m✅ Directory exists: client/public[0m
+[03:26:51.676] [32m✅ File exists: server.js[0m
+[03:26:51.676] [32m✅ File exists: package.json[0m
+[03:26:51.677] [32m✅ File exists: client/index.html[0m
+[03:26:51.677] [32m✅ File exists: client/public/Word_Free_1Year_Setup.msi[0m
+[03:26:51.677] [32m✅ File exists: .env.example[0m
+[03:26:51.677] [36m
+[03:26:51.677] 📦 Checking Dependencies...[0m
+[03:26:51.677] [34mℹ️  Production dependencies: 9[0m
+[03:26:51.678] [34mℹ️  Development dependencies: 1[0m
+[03:26:51.678] [32m✅ All required dependencies present[0m
+[03:26:51.678] [36m
+[03:26:51.678] 🌍 Environment Setup...[0m
+[03:26:51.678] [32m✅ .env.example found[0m
+[03:26:51.679] [32m✅ .env file present[0m
+[03:26:51.679] [36m
+[03:26:51.679] 🎨 Optimizing CSS...[0m
+[03:26:51.679] [34mℹ️  Found 11 CSS files[0m
+[03:26:51.679] [32m✅ Enhanced styling file present[0m
+[03:26:51.679] [36m
+[03:26:51.680] 🔧 Validating JavaScript...[0m
+[03:26:51.680] [34mℹ️  Found 19 JavaScript files[0m
+[03:26:51.680] [32m✅ Download functionality present in HTML[0m
+[03:26:51.680] [36m
+[03:26:51.680] 🖼️  Optimizing Assets...[0m
+[03:26:51.680] [34mℹ️  client/images: 4 files[0m
+[03:26:51.680] [34mℹ️  client/fonts: 35 files[0m
+[03:26:51.680] [34mℹ️  client/public: 1 files[0m
+[03:26:51.681] [32m✅ MSI file ready: 16204.00 KB[0m
+[03:26:51.681] [36m
+[03:26:51.681] 🚀 Development Server Check...[0m
+[03:26:51.681] [33m⚠️  Server might not be configured for Replit[0m
+[03:26:51.681] [32m✅ Telegram logging functionality present[0m
+[03:26:51.681] [32m✅ MSI file path configured correctly[0m
+[03:26:51.681] [35m
+[03:26:51.681] 📊 Build Report[0m
+[03:26:51.681] [35m══════════════════════════════════════════════════[0m
+[03:26:51.681] [36mBuild Time: 6ms[0m
+[03:26:51.681] [32mErrors: 0[0m
+[03:26:51.682] [33mWarnings: 1[0m
+[03:26:51.682] [33m
+[03:26:51.682] Warnings:[0m
+[03:26:51.682] [33m  • Server might not be configured for Replit[0m
+[03:26:51.682] [35m
+[03:26:51.682] ══════════════════════════════════════════════════[0m
+[03:26:51.682] [32m✅ Build completed successfully! 🎉[0m
+[03:26:51.689] 
+[03:26:51.690] added 138 packages in 2s
+[03:26:51.695] 
+[03:26:51.695] 30 packages are looking for funding
+[03:26:51.696]   run `npm fund` for details
+[03:26:51.723] Running "npm run vercel-build"
+[03:26:51.819] 
+[03:26:51.819] > word-free-download@1.0.0 vercel-build
+[03:26:51.820] > NODE_ENV=production vite build
+[03:26:51.820] 
+[03:26:52.073] [36mvite v6.3.6 [32mbuilding for production...[36m[39m
+[03:26:52.157] [32m✓[39m 0 modules transformed.
+[03:26:52.161] [31m✗[39m Build failed in 61ms
+[03:26:52.161] [31merror during build:
+[03:26:52.161] [31m[vite:build-html] Unable to parse HTML; parse5 error code unexpected-character-in-attribute-name
+[03:26:52.161]  at /vercel/path0/index.html:859:143
+[03:26:52.161] 857|      CVToken: CASMicrosoftCVc33d7c5b.1
+[03:26:52.162] 858|    End of ADDITIONAL DEBUG INFO -->
+[03:26:52.162] 859|                  <link rel="stylesheet" href="css/ae-f1ac0c.css" type="text/css" media="all">    <div id="headerArea" class="uhf" data-m="{" cn":"headerarea","ct":"area_coreuiarea","id":"a1body","sn":1,"an":"body"}"="">
+[03:26:52.162]    |                                                                                                                                                ^
+[03:26:52.162] 860|                  <div id="headerRegion" data-region-key="headerregion" data-m="{" cn":"headerregion","ct":"region_coreui-region","id":"r1a1","sn":1,"an":"a1"}"="">
+[03:26:52.162] 861|  [31m
+[03:26:52.162] file: [36m/vercel/path0/index.html[31m
+[03:26:52.163]     at handleParseError (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36201:9)
+[03:26:52.163]     at Parser.onParseError (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36114:7)
+[03:26:52.163]     at Tokenizer._err (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1513:89)
+[03:26:52.163]     at Tokenizer._stateAttributeName (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:2824:22)
+[03:26:52.163]     at Tokenizer._callState (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1945:22)
+[03:26:52.163]     at Tokenizer._runParsingLoop (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1537:22)
+[03:26:52.163]     at Tokenizer.write (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:1562:14)
+[03:26:52.164]     at Parser.parse (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:5086:26)
+[03:26:52.164]     at parse (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-CvfTChi5.js:8215:19)
+[03:26:52.164]     at traverseHtml (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36109:15)[39m
+[03:26:52.179] Error: Command "npm run vercel-build" exited with 1
