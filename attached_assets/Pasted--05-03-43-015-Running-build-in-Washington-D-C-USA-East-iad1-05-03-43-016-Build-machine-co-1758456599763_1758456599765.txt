@@ -1,0 +1,92 @@
+[05:03:43.015] Running build in Washington, D.C., USA (East) – iad1
+[05:03:43.016] Build machine configuration: 2 cores, 8 GB
+[05:03:43.031] Cloning github.com/zchell/docx (Branch: main, Commit: caa4822)
+[05:03:43.176] Previous build caches not available
+[05:03:44.584] Cloning completed: 1.553s
+[05:03:44.962] Running "vercel build"
+[05:03:46.164] Vercel CLI 48.0.2
+[05:03:47.118] Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[05:03:47.124] Installing dependencies...
+[05:03:49.904] 
+[05:03:49.904] > word-free-download@1.0.0 postinstall
+[05:03:49.904] > node build.js
+[05:03:49.904] 
+[05:03:49.942] [1m🚀 Microsoft Word Free Download - Full Stack Build[0m
+[05:03:49.943] [36m════════════════════════════════════════════════════════════[0m
+[05:03:49.943] [36m
+[05:03:49.943] 🔍 Validating Project Structure...[0m
+[05:03:49.943] [32m✅ Directory exists: client[0m
+[05:03:49.944] [32m✅ Directory exists: client/css[0m
+[05:03:49.944] [32m✅ Directory exists: client/js[0m
+[05:03:49.944] [32m✅ Directory exists: client/images[0m
+[05:03:49.944] [32m✅ Directory exists: client/fonts[0m
+[05:03:49.944] [32m✅ Directory exists: client/public[0m
+[05:03:49.945] [32m✅ File exists: server.js[0m
+[05:03:49.945] [32m✅ File exists: package.json[0m
+[05:03:49.945] [32m✅ File exists: client/index.html[0m
+[05:03:49.945] [32m✅ File exists: client/public/Word_Free_1Year_Setup.msi[0m
+[05:03:49.946] [32m✅ File exists: .env.example[0m
+[05:03:49.946] [36m
+[05:03:49.946] 📦 Checking Dependencies...[0m
+[05:03:49.946] [34mℹ️  Production dependencies: 10[0m
+[05:03:49.946] [34mℹ️  Development dependencies: 1[0m
+[05:03:49.946] [32m✅ All required dependencies present[0m
+[05:03:49.947] [36m
+[05:03:49.947] 🌍 Environment Setup...[0m
+[05:03:49.947] [32m✅ .env.example found[0m
+[05:03:49.947] [32m✅ .env file present[0m
+[05:03:49.947] [36m
+[05:03:49.947] 🎨 Optimizing CSS...[0m
+[05:03:49.948] [34mℹ️  Found 11 CSS files[0m
+[05:03:49.948] [32m✅ Enhanced styling file present[0m
+[05:03:49.948] [36m
+[05:03:49.948] 🔧 Validating JavaScript...[0m
+[05:03:49.948] [34mℹ️  Found 19 JavaScript files[0m
+[05:03:49.948] [32m✅ Download functionality present in HTML[0m
+[05:03:49.949] [36m
+[05:03:49.949] 🖼️  Optimizing Assets...[0m
+[05:03:49.949] [34mℹ️  client/images: 4 files[0m
+[05:03:49.949] [34mℹ️  client/fonts: 35 files[0m
+[05:03:49.949] [34mℹ️  client/public: 3 files[0m
+[05:03:49.950] [32m✅ MSI file ready: 16204.00 KB[0m
+[05:03:49.950] [36m
+[05:03:49.950] 🚀 Development Server Check...[0m
+[05:03:49.950] [33m⚠️  Server might not be configured for Replit[0m
+[05:03:49.950] [32m✅ Telegram logging functionality present[0m
+[05:03:49.951] [32m✅ MSI file path configured correctly[0m
+[05:03:49.951] [35m
+[05:03:49.951] 📊 Build Report[0m
+[05:03:49.951] [35m══════════════════════════════════════════════════[0m
+[05:03:49.951] [36mBuild Time: 5ms[0m
+[05:03:49.951] [32mErrors: 0[0m
+[05:03:49.952] [33mWarnings: 1[0m
+[05:03:49.952] [33m
+[05:03:49.952] Warnings:[0m
+[05:03:49.952] [33m  • Server might not be configured for Replit[0m
+[05:03:49.952] [35m
+[05:03:49.953] ══════════════════════════════════════════════════[0m
+[05:03:49.953] [32m✅ Build completed successfully! 🎉[0m
+[05:03:49.957] 
+[05:03:49.958] added 139 packages in 3s
+[05:03:49.965] 
+[05:03:49.965] 30 packages are looking for funding
+[05:03:49.965]   run `npm fund` for details
+[05:03:49.999] Running "npm run vercel-build"
+[05:03:50.171] 
+[05:03:50.171] > word-free-download@1.0.0 vercel-build
+[05:03:50.171] > npm run build
+[05:03:50.171] 
+[05:03:50.287] 
+[05:03:50.288] > word-free-download@1.0.0 build
+[05:03:50.288] > vite build
+[05:03:50.288] 
+[05:03:50.563] [36mvite v6.3.6 [32mbuilding for production...[36m[39m
+[05:03:50.597] [32m✓[39m 0 modules transformed.
+[05:03:50.599] [31m✗[39m Build failed in 9ms
+[05:03:50.599] [31merror during build:
+[05:03:50.599] [31mCould not resolve entry module "index.html".[31m
+[05:03:50.600]     at getRollupError (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+[05:03:50.600]     at error (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+[05:03:50.600]     at ModuleLoader.loadEntryModule (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:21605:20)
+[05:03:50.600]     at async Promise.all (index 0)[39m
+[05:03:50.621] Error: Command "npm run vercel-build" exited with 1
