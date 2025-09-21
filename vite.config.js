@@ -7,13 +7,13 @@ export default defineConfig({
   // Development server configuration
   server: {
     host: '0.0.0.0',
-    port: 3000,
+    port: 5000,
     strictPort: false,
     allowedHosts: 'all',
     // Proxy API calls to your Express server
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:5000',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
         configure: (proxy, options) => {

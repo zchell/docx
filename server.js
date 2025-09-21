@@ -11,13 +11,13 @@ const config = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || null,
     TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || null,
-    HOST: process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0' // Always bind to 0.0.0.0 for cloud platforms
+    HOST: 'localhost' // Backend should use localhost, frontend will proxy API calls
 };
 
 // Validate required dependencies
 if (!config.PORT || isNaN(config.PORT)) {
-    console.error('❌ Invalid PORT configuration. Using default: 5000');
-    config.PORT = 5000;
+    console.error('❌ Invalid PORT configuration. Using default: 3001');
+    config.PORT = 3001;
 }
 
 // Log configuration status
