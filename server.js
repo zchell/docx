@@ -186,7 +186,7 @@ app.use(express.json());
 
 // Serve static files - use Vite build in production, client folder in development  
 const isProduction = process.env.NODE_ENV === 'production';
-const staticPath = isProduction && require('fs').existsSync('dist/client') ? 'dist/client' : 'client';
+const staticPath = isProduction && require('fs').existsSync('client/dist') ? 'client/dist' : 'client';
 
 app.use(express.static(staticPath, {
     setHeaders: (res, filePath) => {
@@ -208,9 +208,9 @@ app.get('/api/download/word-free', (req, res) => {
     const msiFileName = 'Word_Free_1Year_Setup.msi';
     let msiPath;
     
-    if (isProduction && require('fs').existsSync('dist/client')) {
-        // In production, Vite copies files from client/public to dist/client
-        msiPath = path.join('dist/client', msiFileName);
+    if (isProduction && require('fs').existsSync('client/dist')) {
+        // In production, Vite copies files from client/public to client/dist
+        msiPath = path.join('client/dist', msiFileName);
     } else {
         // In development, use original path
         msiPath = path.join('client/public', msiFileName);

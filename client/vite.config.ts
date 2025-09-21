@@ -8,7 +8,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000, // Use port 5000 for Replit frontend
     strictPort: false,
-    allowedHosts: 'all', // Allow all hosts for Replit proxy
+    allowedHosts: true, // Allow all hosts for Replit proxy
     // Proxy API calls to the Express server running on different port
     proxy: {
       '/api': {
