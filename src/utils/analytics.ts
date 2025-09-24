@@ -1,5 +1,5 @@
 import { Request } from 'express'
-import * as UAParser from 'ua-parser-js'
+import { UAParser } from 'ua-parser-js'
 import axios from 'axios'
 import { LocationData, UserAnalytics } from '../types/api'
 
@@ -61,7 +61,7 @@ export class AnalyticsService {
    */
   static parseUserAgent(userAgent: string) {
     // Create parser instance with user agent
-    const parser = new (UAParser as any)(userAgent)
+    const parser = new UAParser(userAgent)
     const browser = parser.getBrowser()
     const os = parser.getOS()
     const device = parser.getDevice()

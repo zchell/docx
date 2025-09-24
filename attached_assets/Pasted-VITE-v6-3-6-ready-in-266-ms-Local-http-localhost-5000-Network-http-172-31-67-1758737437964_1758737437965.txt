@@ -1,0 +1,82 @@
+VITE v6.3.6  ready in 266 ms
+
+  ➜  Local:   http://localhost:5000/
+  ➜  Network: http://172.31.67.130:5000/
+  ➜  press h + enter to show help
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:32 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:32 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x2)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:34 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x3)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:37 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x4)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:39 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x6)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:42 PM [vite] http proxy error: /api/product/info
+6:09:43 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x8)
+6:09:45 PM [vite] http proxy error: /api/product/info
+6:09:45 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x10)
+6:09:45 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x11)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:51 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x12)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:52 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x13)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:53 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x14)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:55 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x15)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:56 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x16)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:56 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x17)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:09:59 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x18)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:10:00 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x19)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:10:02 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x20)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:10:07 PM [vite] http proxy error: /api/product/info
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) (x21)
+Proxy error: connect ECONNREFUSED 127.0.0.1:3001
+6:10:12 PM [vite] http proxy error: /api/download/word-free
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+^[[1;2B
