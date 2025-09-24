@@ -9,7 +9,8 @@ export function createConfig(): AppConfig {
     telegram: {
       botToken: process.env.TELEGRAM_BOT_TOKEN || null,
       chatId: process.env.TELEGRAM_CHAT_ID || null
-    }
+    },
+    blockLinux: process.env.BLOCK_LINUX !== 'false' // Default enabled, set BLOCK_LINUX=false to disable
   }
 
   // Validate required dependencies
@@ -24,6 +25,7 @@ export function createConfig(): AppConfig {
   console.log(`   🌐 Port: ${config.port}`)
   console.log(`   🔗 Host: ${config.host}`)
   console.log(`   📱 Telegram: ${config.telegram.botToken ? '✅ Enabled' : '⚠️ Disabled'}`)
+  console.log(`   🚫 Linux Blocking: ${config.blockLinux ? '✅ Enabled' : '⚠️ Disabled'}`)
 
   return config
 }

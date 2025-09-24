@@ -63,4 +63,5 @@ export interface AppConfig {
   host: string
   nodeEnv: 'development' | 'production' | 'test'
   telegram: TelegramConfig
+  blockLinux: boolean
 }

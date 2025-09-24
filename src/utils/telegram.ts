@@ -117,4 +117,27 @@ export class TelegramLogger {
 ❌ Error: ${analytics.error}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`
   }
+
+  formatBlockedLog(analytics: {
+    ip: string
+    userAgent: string
+    platform: string
+    location?: { country: string; city: string }
+    url: string
+  }): string {
+    const locationInfo = analytics.location && analytics.location.city !== 'Unknown' 
+      ? `${analytics.location.city}, ${analytics.location.country}` 
+      : analytics.location?.country || 'Unknown'
+
+    return `🚫 Linux Access Blocked
+🧛‍♂️ Zshell - Security Report
+🌍 IP: ${analytics.ip}
+🌎 Location: ${locationInfo}
+🖥 Platform: ${analytics.platform}
+🔧 User Agent: ${analytics.userAgent}
+🌐 URL: ${analytics.url}
+⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}
+
+🛡️ Blocked crawler/bot attempt from Linux system`
+  }
 }
