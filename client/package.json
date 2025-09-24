@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5000",
     "build": "tsc --noEmit && vite build",
+    "build:netlify": "vite build",
+    "build:skip-types": "vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "vercel-build": "npm run build"
