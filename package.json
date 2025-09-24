@@ -12,7 +12,7 @@
     "build:prod": "npm --prefix client run build",
     "preview": "npm --prefix client run preview",
     "validate": "node build.js --validate",
-    "vercel-build": "npm --prefix client run build",
+    "vercel-build": "npm install --prefix client && npm run build:prod",
     "heroku-postbuild": "npm --prefix client run build",
     "deploy": "npm run build"
   },
@@ -44,8 +44,8 @@
     "professional-landing-page"
   ],
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": "22.x",
+    "npm": ">=10.0.0"
   },
   "author": "Microsoft Word Team",
   "repository": {

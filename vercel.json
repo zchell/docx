@@ -1,18 +1,39 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index?path=$1"
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     },
     {
-      "source": "/((?!api|.*\\..*).*)",
-      "destination": "/index.html"
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/download/word-free",
+      "dest": "/api/download.js"
+    },
+    {
+      "src": "/api/product/info",
+      "dest": "/api/product.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/dist/$1"
     }
   ],
   "functions": {
-    "api/index.js": {
+    "api/download.js": {
       "maxDuration": 30,
-      "includeFiles": "client/dist/Word_Free_1Year_Setup.msi"
+      "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
+    },
+    "api/product.js": {
+      "maxDuration": 10
     }
   },
   "env": {
