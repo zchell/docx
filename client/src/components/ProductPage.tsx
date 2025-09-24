@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorMessage from './ErrorMessage'
@@ -38,8 +38,8 @@ const fetchProductInfo = async (): Promise<ProductInfo> => {
   return response.json()
 }
 
-const ProductPage: React.FC = () => {
-  const [downloadState, setDownloadState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+const ProductPage = () => {
+  const [downloadState, setDownloadState] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   
   const { data: productInfo, isLoading, error } = useQuery({
     queryKey: ['productInfo'],

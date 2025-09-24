@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import styles from '../styles/LoadingSpinner.module.css'
 
-const LoadingSpinner: React.FC = () => {
+const LoadingSpinner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.spinner} aria-label="Loading...">

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import styles from '../styles/ProductDetails.module.css'
 
 interface ProductDetailsProps {
@@ -11,7 +11,7 @@ interface ProductDetailsProps {
   }
 }
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({ description, licenseInfo }) => {
+const ProductDetails = ({ description, licenseInfo }: ProductDetailsProps) => {
   const descriptionLines = description.split('\n').filter(line => line.trim())
 
   return (

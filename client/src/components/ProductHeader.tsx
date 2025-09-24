@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import styles from '../styles/ProductHeader.module.css'
 
 interface ProductHeaderProps {
@@ -6,7 +6,7 @@ interface ProductHeaderProps {
   productType: string
 }
 
-const ProductHeader: React.FC<ProductHeaderProps> = ({ title, productType }) => {
+const ProductHeader = ({ title, productType }: ProductHeaderProps) => {
   return (
     <header className={styles.header}>
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">

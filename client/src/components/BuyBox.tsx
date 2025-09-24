@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import styles from '../styles/BuyBox.module.css'
 
 interface BuyBoxProps {
@@ -17,8 +17,8 @@ interface BuyBoxProps {
   }
 }
 
-const BuyBox: React.FC<BuyBoxProps> = ({ action }) => {
-  const [downloadState, setDownloadState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+const BuyBox = ({ action }: BuyBoxProps) => {
+  const [downloadState, setDownloadState] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleDownload = async () => {
     if (downloadState === 'loading') return
