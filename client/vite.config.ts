@@ -27,9 +27,27 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
+    minify: 'terser',
+    cssMinify: true,
+    cssCodeSplit: true,
+    sourcemap: false,
     rollupOptions: {
-      input: 'index.html'
-    }
+      input: 'index.html',
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          query: ['@tanstack/react-query']
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      },
+      external: [],
+      treeshake: true
+    },
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1000
   },
   base: './',
 })
