@@ -33,9 +33,78 @@ const gracefulShutdown = (signal: string) => {
 process.on('SIGTERM', () => gracefulShutdown('SIGTERM'))
 process.on('SIGINT', () => gracefulShutdown('SIGINT'))
 
+// Linux blocking middleware (applied before other routes)
+const linuxBlockingMiddleware = async (req: Request, res: Response, next: any) => {
+  if (!config.blockLinux) {
+    return next() // Blocking disabled, continue
+  }
+
+  const userAgent = req.headers['user-agent'] as string || ''
+  
+  // Only check HTML requests and API calls to avoid blocking assets
+  const isHtmlRequest = req.accepts('html') || req.path.startsWith('/api/')
+  if (!isHtmlRequest) {
+    return next()
+  }
+
+  try {
+    const analytics = await AnalyticsService.generateAnalytics(req)
+    const platform = analytics.device.platform.toLowerCase()
+    
+    // Block desktop Linux (but allow Android and ChromeOS)
+    const isLinux = platform.includes('linux') && 
+                   !platform.includes('android') && 
+                   !platform.includes('chrome') &&
+                   !platform.includes('chromeos')
+    
+    if (isLinux) {
+      console.log(`🚫 Blocked Linux access from ${analytics.ip} - ${analytics.device.platform}`)
+      
+      // Log to Telegram (non-blocking)
+      const blockMessage = telegramLogger.formatBlockedLog({
+        ip: analytics.ip,
+        userAgent: analytics.userAgent,
+        platform: analytics.device.platform,
+        location: analytics.location,
+        url: req.originalUrl || req.url
+      })
+      telegramLogger.sendLog(blockMessage).catch(error => 
+        console.error('❌ Failed to send block log:', error.message)
+      )
+      
+      // Return 403 with informative message
+      if (req.path.startsWith('/api/')) {
+        return res.status(403).json({
+          success: false,
+          message: 'Access denied - Linux systems not supported',
+          error: 'LINUX_BLOCKED'
+        })
+      } else {
+        return res.status(403).send(`
+          <!DOCTYPE html>
+          <html>
+          <head><title>Access Denied</title></head>
+          <body>
+            <h1>🚫 Access Denied</h1>
+            <p>Linux-based systems are not supported for this service.</p>
+            <p>Please use Windows or macOS to access this website.</p>
+          </body>
+          </html>
+        `)
+      }
+    }
+  } catch (error) {
+    console.error('❌ Linux blocking middleware error:', error)
+    // Continue on error to avoid breaking site
+  }
+  
+  next()
+}
+
 // Middleware
 app.use(cors())
 app.use(express.json())
+app.use(linuxBlockingMiddleware)
 
 // Serve static files - use Vite build in production, client folder in development  
 const isProduction = config.nodeEnv === 'production'
