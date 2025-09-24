@@ -9,25 +9,15 @@
       "maxDuration": 30
     }
   },
-  "routes": [
-    {
-      "src": "/robots.txt",
-      "dest": "/client/dist/robots.txt"
-    },
-    {
-      "src": "/api/download",
-      "dest": "/api/download.ts"
-    },
-    {
-      "src": "/api/product",
-      "dest": "/api/product.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/dist/$1"
-    }
-  ],
   "rewrites": [
+    {
+      "source": "/api/download/(.*)",
+      "destination": "/api/download.ts"
+    },
+    {
+      "source": "/api/product/(.*)",
+      "destination": "/api/product.ts"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
