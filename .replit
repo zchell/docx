@@ -15,14 +15,14 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Frontend Server"
+args = "Frontend"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Backend API"
+args = "Backend"
 
 [[workflows.workflow]]
-name = "Frontend Server"
+name = "Frontend"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -34,7 +34,7 @@ waitForPort = 5000
 outputType = "webview"
 
 [[workflows.workflow]]
-name = "Backend API"
+name = "Backend"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -52,14 +52,6 @@ externalPort = 5000
 [[ports]]
 localPort = 3001
 externalPort = 3001
-
-[[ports]]
-localPort = 5000
-externalPort = 80
-
-[[ports]]
-localPort = 39323
-externalPort = 3003
 
 [[ports]]
 localPort = 40557
