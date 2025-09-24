@@ -115,7 +115,8 @@ app.get('/api/download/word-free', async (req: Request, res: Response) => {
         const errorMessage = telegramLogger.formatErrorLog({
           ip: analytics.ip,
           device: analytics.device,
-          error: err.message
+          error: err.message,
+          userAgent: analytics.userAgent
         })
         telegramLogger.sendLog(errorMessage).catch(console.error)
 
@@ -134,7 +135,8 @@ app.get('/api/download/word-free', async (req: Request, res: Response) => {
           ip: analytics.ip,
           fileName,
           location: analytics.location,
-          device: analytics.device
+          device: analytics.device,
+          userAgent: analytics.userAgent
         })
         telegramLogger.sendLog(successMessage).catch(console.error)
       }

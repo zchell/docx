@@ -65,6 +65,7 @@ export class TelegramLogger {
 🖥 Platform: ${analytics.device.platform}
 🌐 Browser: ${analytics.device.browser}
 🌎 Country: ${locationInfo}
+🔧 User Agent: ${analytics.userAgent}
 
 🔵 Docx User attempting to download Docx file
 📱 Device: ${analytics.device.type}
@@ -73,6 +74,7 @@ export class TelegramLogger {
 📍 Location: ${locationInfo}
 ⏰ Time: ${currentTime}
 🔄 Referrer: ${analytics.referrer || 'Direct'}
+🔧 Full UA: ${analytics.userAgent}
 
 🔽 Docx user attempting to download Docx file for ${analytics.device.type} device
 
@@ -84,6 +86,7 @@ export class TelegramLogger {
     fileName: string
     location: { country: string; city: string }
     device: { type: string; browser: string }
+    userAgent?: string
   }): string {
     const locationInfo = analytics.location.city !== 'Unknown' 
       ? `${analytics.location.city}, ${analytics.location.country}` 
@@ -96,6 +99,7 @@ export class TelegramLogger {
 📁 File: ${analytics.fileName}
 📱 Device: ${analytics.device.type}
 🌐 Browser: ${analytics.device.browser}
+🔧 User Agent: ${analytics.userAgent || 'Unknown'}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`
   }
 
@@ -103,11 +107,13 @@ export class TelegramLogger {
     ip: string
     device: { type: string }
     error: string
+    userAgent?: string
   }): string {
     return `❌ Download Error
 🧛‍♂️ Zshell - Error Report
 🌍 IP: ${analytics.ip}
 📱 Device: ${analytics.device.type}
+🔧 User Agent: ${analytics.userAgent || 'Unknown'}
 ❌ Error: ${analytics.error}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`
   }
