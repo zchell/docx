@@ -15,23 +15,11 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Backend"
+args = "Frontend"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Frontend"
-
-[[workflows.workflow]]
-name = "Backend"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "BLOCK_LINUX=false PORT=3001 NODE_ENV=development node dist/server/index.js"
-waitForPort = 3001
-
-[workflows.workflow.metadata]
-outputType = "console"
+args = "Backend"
 
 [[workflows.workflow]]
 name = "Frontend"
@@ -45,19 +33,31 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "Backend"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "BLOCK_LINUX=false PORT=3001 NODE_ENV=development node dist/server/index.js"
+waitForPort = 3001
+
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[ports]]
 localPort = 3000
-externalPort = 5000
 
 [[ports]]
 localPort = 3001
-
-[[ports]]
-localPort = 34395
-externalPort = 80
+externalPort = 3001
 
 [[ports]]
 localPort = 46681
+
+[[ports]]
+localPort = 5000
+externalPort = 80
 
 [deployment]
 deploymentTarget = "vm"
