@@ -56,7 +56,7 @@
     "professional-landing-page"
   ],
   "engines": {
-    "node": "22.x",
+    "node": "20.x",
     "npm": ">=10.0.0"
   },
   "author": "Microsoft Word Team",
