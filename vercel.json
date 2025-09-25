@@ -6,9 +6,7 @@
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.0.28",
       "maxDuration": 30,
-      "includeFiles": [
-        "client/public/Word_Free_1Year_Setup.msi"
-      ]
+      "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
     }
   },
   "rewrites": [
