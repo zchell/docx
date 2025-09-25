@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { UAParser } from 'ua-parser-js'
 
 interface ProductInfo {
     productId: string
@@ -26,10 +27,47 @@ interface ProductInfo {
     }
 }
 
+// Configuration for Linux blocking
+const config = {
+    BLOCK_LINUX: process.env.BLOCK_LINUX !== 'false', // Default enabled, set BLOCK_LINUX=false to disable
+}
+
+// Linux blocking function
+function checkLinuxBlocking(userAgent: string): { isLinux: boolean, platform: string } {
+    if (!config.BLOCK_LINUX) {
+        return { isLinux: false, platform: 'blocking disabled' }
+    }
+
+    const parser = new UAParser(userAgent)
+    const os = parser.getOS()
+    const platform = (os.name || '').toLowerCase()
+    
+    // Block desktop Linux (but allow Android and ChromeOS)
+    const isLinux = platform.includes('linux') && 
+                   !platform.includes('android') && 
+                   !platform.includes('chrome') &&
+                   !platform.includes('chromeos')
+    
+    return { isLinux, platform: os.name || 'Unknown' }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Only allow GET requests
     if (req.method !== 'GET') {
         return res.status(405).json({ success: false, message: 'Method not allowed' })
+    }
+
+    // Check Linux blocking
+    const userAgent = req.headers['user-agent'] as string || 'Unknown'
+    const { isLinux, platform } = checkLinuxBlocking(userAgent)
+    if (isLinux) {
+        console.log(`🚫 Blocked Linux access to product info - ${platform}`)
+        
+        return res.status(403).json({
+            success: false,
+            message: 'Access denied - Linux systems not supported',
+            error: 'LINUX_BLOCKED'
+        })
     }
 
     // Set CORS headers for Vercel

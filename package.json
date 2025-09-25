@@ -15,7 +15,7 @@
     "build:legacy": "node build.js",
     "preview": "npm --prefix client run preview",
     "validate": "node build.js --validate",
-    "vercel-build": "npm run build:server",
+    "vercel-build": "npm run build:client",
     "heroku-postbuild": "npm run build",
     "deploy": "npm run build",
     "type-check": "tsc --noEmit",
