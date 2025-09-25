@@ -1,0 +1,46 @@
+05:17:43.223 Running build in Washington, D.C., USA (East) – iad1
+05:17:43.223 Build machine configuration: 2 cores, 8 GB
+05:17:43.251 Cloning github.com/zchell/docx (Branch: main, Commit: ffc3c9d)
+05:17:43.365 Previous build caches not available
+05:17:44.894 Cloning completed: 1.643s
+05:17:45.235 Running "vercel build"
+05:17:45.606 Vercel CLI 48.1.6
+05:17:46.174 > Installing Builder: @vercel/node@3.0.28
+05:17:57.943 Installing dependencies...
+05:18:02.001 
+05:18:02.001 added 277 packages in 3s
+05:18:02.002 
+05:18:02.002 44 packages are looking for funding
+05:18:02.002   run `npm fund` for details
+05:18:02.232 
+05:18:02.232 > word-free-download@1.0.0 build
+05:18:02.232 > npm run build:server && npm run build:client
+05:18:02.232 
+05:18:02.338 
+05:18:02.338 > word-free-download@1.0.0 build:server
+05:18:02.339 > tsc -p tsconfig.server.json
+05:18:02.339 
+05:18:03.956 
+05:18:03.956 > word-free-download@1.0.0 build:client
+05:18:03.956 > npm --prefix client run build
+05:18:03.957 
+05:18:04.062 
+05:18:04.063 > word-free-download-client@1.0.0 build
+05:18:04.064 > tsc --noEmit && vite build
+05:18:04.064 
+05:18:05.361 src/App.tsx(5,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.362 src/components/BuyBox.tsx(21,51): error TS2339: Property 'useState' does not exist on type 'typeof import("react")'.
+05:18:05.362 src/components/BuyBox.tsx(86,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.362 src/components/ErrorMessage.tsx(10,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.363 src/components/LoadingSpinner.tsx(6,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.363 src/components/ProductDetails.tsx(18,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.363 src/components/ProductHeader.tsx(11,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.363 src/components/ProductPage.tsx(2,26): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+05:18:05.364 src/components/ProductPage.tsx(42,51): error TS2339: Property 'useState' does not exist on type 'typeof import("react")'.
+05:18:05.364 src/components/ProductPage.tsx(73,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.366 src/main.tsx(2,22): error TS2307: Cannot find module 'react-dom/client' or its corresponding type declarations.
+05:18:05.366 src/main.tsx(3,50): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+05:18:05.367 src/main.tsx(18,3): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+05:18:05.367 src/main.tsx(18,10): error TS2339: Property 'StrictMode' does not exist on type 'typeof import("react")'.
+05:18:05.367 src/main.tsx(22,11): error TS2339: Property 'StrictMode' does not exist on type 'typeof import("react")'.
+05:18:05.390 Error: Command "npm run build" exited with 2
