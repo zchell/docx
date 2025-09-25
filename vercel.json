@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": "client/dist",
+  "buildCommand": "npm run build:server",
+  "outputDirectory": "client",
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.0.28",
-      "maxDuration": 30
+      "maxDuration": 30,
+      "includeFiles": [
+        "client/public/Word_Free_1Year_Setup.msi"
+      ]
     }
   },
   "rewrites": [
