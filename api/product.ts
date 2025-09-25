@@ -1,30 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { UAParser } from 'ua-parser-js'
 
-interface ProductInfo {
-    productId: string
-    title: string
-    description: string
-    productType: string
-    price: {
-        currency: string
-        current: string
-        original: string
-        savings: string
-        dynamicOriginalPrice: string
-    }
-    action: {
-        action: string
-        actionText: string
-        behaviorTag: number
-        disabled: boolean
-    }
-    licenseInfo: {
-        type: string
-        duration: string
-        features: string
-        support: string
-    }
+// Simple user agent parser - no external dependencies
+function parseUserAgent(userAgent: string) {
+    const ua = userAgent.toLowerCase()
+    
+    // Detect OS
+    let osName = 'Unknown OS'
+    if (ua.includes('windows nt 10.0')) osName = 'Windows 10'
+    else if (ua.includes('windows nt 6.3')) osName = 'Windows 8.1' 
+    else if (ua.includes('windows nt 6.1')) osName = 'Windows 7'
+    else if (ua.includes('windows')) osName = 'Windows'
+    else if (ua.includes('mac os x')) osName = 'macOS'
+    else if (ua.includes('android')) osName = 'Android'
+    else if (ua.includes('linux') && !ua.includes('android')) osName = 'Linux'
+    else if (ua.includes('iphone')) osName = 'iOS'
+    
+    return { platform: osName }
 }
 
 // Configuration for Linux blocking
@@ -34,21 +25,17 @@ const config = {
 
 // Linux blocking function
 function checkLinuxBlocking(userAgent: string): { isLinux: boolean, platform: string } {
-    if (!config.BLOCK_LINUX) {
-        return { isLinux: false, platform: 'blocking disabled' }
-    }
+    if (!config.BLOCK_LINUX) return { isLinux: false, platform: 'blocking disabled' }
 
-    const parser = new UAParser(userAgent)
-    const os = parser.getOS()
-    const platform = (os.name || '').toLowerCase()
+    const device = parseUserAgent(userAgent)
+    const platform = device.platform.toLowerCase()
     
     // Block desktop Linux (but allow Android and ChromeOS)
     const isLinux = platform.includes('linux') && 
                    !platform.includes('android') && 
-                   !platform.includes('chrome') &&
-                   !platform.includes('chromeos')
+                   !platform.includes('chrome')
     
-    return { isLinux, platform: os.name || 'Unknown' }
+    return { isLinux, platform: device.platform }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -77,7 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Content-Type', 'application/json')
 
     // Return product information
-    const productInfo: ProductInfo = {
+    const productInfo = {
         productId: "cfq7ttc0pbmb",
         title: "Word - Free 1 Year License",
         description: "• Free for 1 PC or Mac for 1 year\n• Create beautiful and engaging documents\n• Share your documents with others and edit together in real time*\n• Compatible with Windows 11, Windows 10, or macOS\n\n*Files must be shared from OneDrive.",

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.ts": {
+    "api/*.ts": {
       "runtime": "@vercel/node@3.0.28",
       "maxDuration": 30,
       "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
@@ -9,20 +9,12 @@
   },
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/client/index.html"
-    },
-    {
-      "source": "/api/download/(.*)",
+      "source": "/api/download",
       "destination": "/api/download.ts"
     },
     {
-      "source": "/api/product/(.*)",
+      "source": "/api/product/info",
       "destination": "/api/product.ts"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
     },
     {
       "source": "/(.*)",
@@ -31,49 +23,13 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, nosnippet, noarchive"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "no-referrer"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=()"
-        }
-      ]
-    },
-    {
       "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "Pragma",
           "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
         }
       ]
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

