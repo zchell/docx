@@ -385,6 +385,27 @@
 
 
 <script>
+// Stub functions to prevent Microsoft client library errors
+window.isFeatureEnabled = function(feature) {
+    return false; // Default to feature disabled
+};
+
+// Initialize Microsoft common shell stubs
+window.msCommonShell = window.msCommonShell || {
+    AccountApiData: { aadInfo: {} },
+    window: {
+        onShellReadyToLoad: function() { /* stub */ }
+    },
+    load: function() { /* stub for Microsoft shell loading */ }
+};
+
+// Additional stubs for Microsoft libraries
+window.UHF = window.UHF || {};
+window.mscc = window.mscc || {};
+window.WcpConsent = window.WcpConsent || {};
+
+console.log('✅ Microsoft client library stubs initialized');
+
 // Download functionality for free Word version
 function downloadFreeVersion(isAutoDownload = false) {
     const button = document.getElementById('buybox-cta-proper');
