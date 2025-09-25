@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:server",
-  "outputDirectory": "client",
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.0.28",
@@ -10,6 +8,10 @@
     }
   },
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/client/index.html"
+    },
     {
       "source": "/api/download/(.*)",
       "destination": "/api/download.ts"
@@ -21,6 +23,10 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/client/$1"
     }
   ],
   "headers": [
