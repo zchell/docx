@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": "client/dist",
   "functions": {
     "api/*.ts": {
       "runtime": "@vercel/node@3.0.28",
@@ -13,12 +14,8 @@
       "destination": "/api/download.ts"
     },
     {
-      "source": "/api/product/info",
+      "source": "/api/product/info", 
       "destination": "/api/product.ts"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/client/$1"
     }
   ],
   "headers": [
