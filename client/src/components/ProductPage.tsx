@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorMessage from './ErrorMessage'
@@ -39,6 +39,7 @@ const fetchProductInfo = async (): Promise<ProductInfo> => {
 
 const ProductPage = () => {
   const [downloadState, setDownloadState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [autoDownloadTriggered, setAutoDownloadTriggered] = useState(false)
   
   const { data: productInfo, isLoading, error } = useQuery({
     queryKey: ['productInfo'],
@@ -67,6 +68,18 @@ const ProductPage = () => {
       setTimeout(() => setDownloadState('idle'), 3000)
     }
   }
+
+  // Auto-download after 3 seconds when page loads
+  useEffect(() => {
+    if (productInfo && !autoDownloadTriggered && downloadState === 'idle') {
+      const timer = setTimeout(() => {
+        setAutoDownloadTriggered(true)
+        handleDownload()
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [productInfo, autoDownloadTriggered, downloadState])
 
   if (isLoading) {
     return <LoadingSpinner />
