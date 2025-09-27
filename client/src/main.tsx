@@ -1,3 +1,3 @@
-// React app removed - using static HTML instead
-// This file is kept for TypeScript compatibility but not used
-console.log('Static HTML mode - React app disabled')
+import './styles/main.css'
+// React app disabled - using static HTML with Tailwind styles loaded
+console.log('Static HTML mode with Tailwind CSS - React app disabled')
