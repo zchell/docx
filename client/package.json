@@ -9,9 +9,9 @@
     "build:with-types": "tsc --noEmit && vite build",
     "build:netlify": "vite build",
     "build:skip-types": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
     "lint": "tsc --noEmit",
-    "vercel-build": "npm run build"
+    "vercel-build": "vite build"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.0",

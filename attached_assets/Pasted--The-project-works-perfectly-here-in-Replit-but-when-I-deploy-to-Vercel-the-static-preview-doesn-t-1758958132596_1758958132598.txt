@@ -1,0 +1,86 @@
+"The project works perfectly here in Replit, but when I deploy to Vercel, the static preview doesn't work correctly. Please help me configure the project specifically for Vercel deployment by:
+
+First, let's diagnose the Vercel build issue:
+
+Run npm run build locally to see the dist folder structure
+
+Check what's different between Replit's serving and Vercel's static hosting
+
+Fix Vercel-specific configuration in vite.config.js:
+
+js
+export default {
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    // Add this for Vercel SPA support
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  },
+  // Critical for Vercel - use absolute paths
+  base: '/',
+  // Ensure proper public path handling
+  publicDir: 'public',
+  server: {
+    port: 3000
+  }
+}
+Create a proper vercel.json for SPA routing:
+
+json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+Check if we need client-side routing fixes:
+
+If using Vue Router/React Router, ensure it's configured for static hosting
+
+Add a 404.html fallback for client-side routing
+
+Test the Vercel build locally:
+
+Serve the dist folder with a static server: npx serve dist -s
+
+Check if all routes work correctly
+
+The goal is to make the Vercel deployment match what works perfectly in Replit!"
+
+Key differences to address:
+Replit uses dynamic serving vs Vercel uses static file hosting
+
+Path resolution might be different
+
+Routing needs special handling for SPAs on static hosts
+
+This should help the agent understand that we need Vercel-specific fixes while preserving the working Replit setup!
+

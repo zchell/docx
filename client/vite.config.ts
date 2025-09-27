@@ -24,7 +24,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../dist',
+    outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
     minify: 'terser',
@@ -32,7 +32,9 @@ export default defineConfig({
     cssCodeSplit: true,
     sourcemap: false,
     rollupOptions: {
-      input: 'index.html',
+      input: {
+        main: './index.html'
+      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
@@ -43,11 +45,17 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
       },
-      external: [],
+      external: [
+        // Ignore Microsoft scripts from bundling
+        /^\/js\/.*/,
+        /^js\/.*/,
+        /^\/echo\/.*/
+      ],
       treeshake: true
     },
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1000
   },
-  base: './',
+  base: '/',
+  publicDir: 'public',
 })
