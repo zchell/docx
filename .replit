@@ -40,7 +40,6 @@ author = "agent"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "PORT=3001 HOST=localhost BLOCK_LINUX=false NODE_ENV=development node dist/server/index.js"
-waitForPort = 3001
 
 [workflows.workflow.metadata]
 outputType = "console"
