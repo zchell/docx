@@ -1,0 +1,97 @@
+21:21:38.580 Running build in Washington, D.C., USA (East) – iad1
+21:21:38.580 Build machine configuration: 2 cores, 8 GB
+21:21:38.620 Cloning github.com/zchell/docx (Branch: main, Commit: a3f12e0)
+21:21:38.753 Previous build caches not available
+21:21:40.464 Cloning completed: 1.844s
+21:21:40.872 Running "vercel build"
+21:21:41.254 Vercel CLI 48.1.6
+21:21:42.271 > Installing Builder: @vercel/node@3.0.28
+21:21:53.318 Installing dependencies...
+21:21:56.902 
+21:21:56.903 added 277 packages in 4s
+21:21:56.903 
+21:21:56.904 44 packages are looking for funding
+21:21:56.904   run `npm fund` for details
+21:21:56.923 Running "npm run vercel-build"
+21:21:57.045 
+21:21:57.045 > word-free-download@1.0.0 vercel-build
+21:21:57.046 > npm run build:client
+21:21:57.046 
+21:21:57.169 
+21:21:57.170 > word-free-download@1.0.0 build:client
+21:21:57.170 > npm --prefix client install && npm --prefix client run build
+21:21:57.171 
+21:22:07.090 
+21:22:07.091 added 78 packages, and audited 79 packages in 10s
+21:22:07.091 
+21:22:07.092 11 packages are looking for funding
+21:22:07.092   run `npm fund` for details
+21:22:07.092 
+21:22:07.093 found 0 vulnerabilities
+21:22:07.227 
+21:22:07.228 > word-free-download-client@1.0.0 build
+21:22:07.228 > vite build
+21:22:07.228 
+21:22:07.478 [36mvite v6.3.6 [32mbuilding for production...[36m[39m
+21:22:07.639 <script src="js/rum-standalone.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.642 <script src="js/defer.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.648 <script src="js/clientlib-jquery.ACSHASH75d0cb3e9ff9fee40f5ce5fd93c17fb2.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.648 <script src="js/clientlib-jquery-cookie.ACSHASH5c75a4fa9fb3503322f8a0c9dd51512d.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.648 <script src="js/v1.ACSHASHbf7b336dbb370c984e1bf59b1a980d86.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.648 <script src="js/v1.ACSHASHa238861e6209e4e02576ddf5d1749c8b.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.649 <script src="js/v1.ACSHASH6734c5d7a732130b83c7d4a6ba54dcec.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.652 <script src="/echo/etc.clientlibs/microsoft/components/content/chat/v1/chat/clientlibs/storeassistant-copilot.ACSHASHf68c40cefc8d4f2cce00974e0b3d2542.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.655 <script src="js/site.ACSHASH23fc850555d2d633ece15b47907387a1.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.657 <script src="js/clientlib.ACSHASH40f3c51c1f06e57e4e9fac6acf3473bf.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.657 <script src="js/site.ACSHASH9e7434689d3756d7032033ac4474262b.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.659 <script src="js/site.ACSHASH11dadf7cea9991f3b92fb67b58842d5c.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.659 <script src="js/sites.ACSHASH148bbe2eead6c5832c56691afb23e496.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.660 <script src="js/wcp-consent.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.661 <script src="js/2b-8e0ae6.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.662 <script src="js/main-light.ACSHASHf8a6ecd849f93a3e5d989c0cee0ceb80.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.669 <script src="js/clientlib-base.ACSHASH8c4bf63fb35a7dddf32ae82600164001.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.669 <script src="js/clientlib-httpclient.ACSHASH726084fbb35cdb34b4b6a7f50889354b.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.669 <script src="js/clientlib-cookieconsent.ACSHASHc892f451b0c4db9c8ab2601a427c9b2c.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.669 <script src="js/embed-thirdparty.ACSHASH9d6d11b9c69e8cce8e9a556502a5a537.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.669 <script src="/echo/etc.clientlibs/microsoft/components/structure/page/clientlibs/featurecontrol.ACSHASHf120033122e43a4cb0b53bb306afc5dc.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.670 <script src="/echo/etc.clientlibs/microsoft/components/structure/page/clientlibs/custom-oneds.ACSHASHd21775b74193f03767dd82cfbc692eff.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.670 <script src="/echo/etc.clientlibs/microsoft/clientlibs/cookie-compliance-manager.ACSHASH015456ea381eb18f1c6cd758c1c31a9c.min.js"> in "/index.html" can't be bundled without type="module" attribute
+21:22:07.689 transforming...
+21:22:07.926 [32m✓[39m 14 modules transformed.
+21:22:08.573 [33mGenerated an empty chunk: "vendor".[39m
+21:22:08.580 [33mGenerated an empty chunk: "router".[39m
+21:22:08.583 [33mGenerated an empty chunk: "query".[39m
+21:22:08.742 rendering chunks...
+21:22:08.769 [2mdist/[22m[2massets/[22m[32mfavicon-CGl1ru7S.ico           [39m[1m[2m 13.86 kB[22m[1m[22m
+21:22:08.769 [2mdist/[22m[2massets/[22m[32mlatest_2-WVPaZKaW.woff2        [39m[1m[2m 27.17 kB[22m[1m[22m
+21:22:08.770 [2mdist/[22m[2massets/[22m[32mlatest-CvgXR6LR.woff2          [39m[1m[2m 28.91 kB[22m[1m[22m
+21:22:08.770 [2mdist/[22m[2massets/[22m[32mlatest_3-0TYdnfsU.woff2        [39m[1m[2m 29.39 kB[22m[1m[22m
+21:22:08.770 [2mdist/[22m[2massets/[22m[32mlatest_4-B0cVNxYA.woff2        [39m[1m[2m 30.13 kB[22m[1m[22m
+21:22:08.771 [2mdist/[22m[2massets/[22m[32mMWFFluentIcons-B-raW3V8.woff2  [39m[1m[2m 32.60 kB[22m[1m[22m
+21:22:08.771 [2mdist/[22m[2massets/[22m[32mlatest_1-CDYnzA19.woff         [39m[1m[2m 33.56 kB[22m[1m[22m
+21:22:08.771 [2mdist/[22m[2massets/[22m[32mlatest_2-BmQYPO-E.woff         [39m[1m[2m 33.98 kB[22m[1m[22m
+21:22:08.771 [2mdist/[22m[2massets/[22m[32mlatest_1--8mV0cEX.woff2        [39m[1m[2m 34.05 kB[22m[1m[22m
+21:22:08.771 [2mdist/[22m[2massets/[22m[32mlatest_3-BXqahT97.woff         [39m[1m[2m 35.90 kB[22m[1m[22m
+21:22:08.774 [2mdist/[22m[2massets/[22m[32mlatest_4-DV0RSgI5.woff         [39m[1m[2m 36.88 kB[22m[1m[22m
+21:22:08.774 [2mdist/[22m[2massets/[22m[32mMWFFluentIcons-B-eqAM0h.woff   [39m[1m[2m 40.34 kB[22m[1m[22m
+21:22:08.774 [2mdist/[22m[2massets/[22m[32mlatest-s7eUWydd.woff           [39m[1m[2m 41.28 kB[22m[1m[22m
+21:22:08.775 [2mdist/[22m[2massets/[22m[32mlatest_2-Cr2jYFZE.ttf          [39m[1m[2m 51.01 kB[22m[1m[22m
+21:22:08.775 [2mdist/[22m[2massets/[22m[32mlatest_1-C2KqB4fo.ttf          [39m[1m[2m 51.93 kB[22m[1m[22m
+21:22:08.775 [2mdist/[22m[2massets/[22m[32mlatest_3-DF30wtBN.ttf          [39m[1m[2m 53.00 kB[22m[1m[22m
+21:22:08.775 [2mdist/[22m[2massets/[22m[32mlatest_4-Ch5wCbbq.ttf          [39m[1m[2m 56.82 kB[22m[1m[22m
+21:22:08.776 [2mdist/[22m[2massets/[22m[32mlatest-BcTDeWRV.ttf            [39m[1m[2m 65.10 kB[22m[1m[22m
+21:22:08.776 [2mdist/[22m[2massets/[22m[32mMWFFluentIcons-7M4StU73.ttf    [39m[1m[2m 78.34 kB[22m[1m[22m
+21:22:08.776 [2mdist/[22m[32mindex.html                            [39m[1m[2m166.56 kB[22m[1m[22m
+21:22:08.777 [2mdist/[22m[2massets/[22m[35mae-f1ac0c-C49VcLKO.css         [39m[1m[2m170.79 kB[22m[1m[22m
+21:22:08.777 [2mdist/[22m[2massets/[22m[35mindex-D7LbfeKI.css             [39m[1m[2m529.80 kB[22m[1m[22m
+21:22:08.777 [2mdist/[22m[2massets/[22m[36mvendor-l0sNRNKZ.js             [39m[1m[2m  0.00 kB[22m[1m[22m
+21:22:08.778 [2mdist/[22m[2massets/[22m[36mrouter-l0sNRNKZ.js             [39m[1m[2m  0.00 kB[22m[1m[22m
+21:22:08.778 [2mdist/[22m[2massets/[22m[36mquery-l0sNRNKZ.js              [39m[1m[2m  0.00 kB[22m[1m[22m
+21:22:08.778 [32m✓ built in 1.27s[39m
+21:22:08.813 Error: No entrypoint found in output directory: "client/dist". Searched for: 
+21:22:08.814 - app.{js,cjs,mjs,ts,cts,mts}
+21:22:08.814 - index.{js,cjs,mjs,ts,cts,mts}
+21:22:08.814 - server.{js,cjs,mjs,ts,cts,mts}
+21:22:08.814 - src/app.{js,cjs,mjs,ts,cts,mts}
+21:22:08.814 - src/index.{js,cjs,mjs,ts,cts,mts}
+21:22:08.814 - src/server.{js,cjs,mjs,ts,cts,mts}

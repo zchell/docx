@@ -46,7 +46,7 @@ async function getLocationData(ip: string) {
         })
         
         if (response.ok) {
-            const data = await response.json()
+            const data = await response.json() as any
             if (data.status === 'success') {
                 return {
                     country: data.country || 'Unknown',
