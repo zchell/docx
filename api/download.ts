@@ -173,9 +173,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Find MSI file in Vercel
     const msiFileName = 'Word_Free_1Year_Setup.msi'
     const paths = [
+        join(process.cwd(), 'dist', msiFileName),
         join(process.cwd(), 'client', 'public', msiFileName),
-        join(process.cwd(), 'public', msiFileName),
-        join(process.cwd(), 'client', 'dist', msiFileName)
+        join(process.cwd(), 'public', msiFileName)
     ]
     
     let filePath: string | null = null

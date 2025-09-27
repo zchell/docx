@@ -1,10 +1,11 @@
 {
   "version": 2,
+  "outputDirectory": "dist",
   "functions": {
     "api/*.ts": {
       "runtime": "@vercel/node@3.0.28",
       "maxDuration": 30,
-      "includeFiles": "client/public/Word_Free_1Year_Setup.msi"
+      "includeFiles": "dist/Word_Free_1Year_Setup.msi"
     }
   },
   "rewrites": [
@@ -15,10 +16,6 @@
     {
       "source": "/api/product/info", 
       "destination": "/api/product"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/client/dist/$1"
     }
   ],
   "headers": [
